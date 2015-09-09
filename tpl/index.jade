@@ -1,0 +1,10 @@
+extends layout
+
+block append title
+	meta(name="description", content="Michael Marek, software engineering student | University of Waterloo")
+
+block content
+	include index.html
+
+block append scripts
+	script(type="text/javascript", src="/static/js/index.js")

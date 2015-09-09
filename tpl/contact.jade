@@ -1,0 +1,11 @@
+extends layout
+
+block title
+	title Contact | Michael Marek
+	
+block content
+	include contact.html
+
+block append scripts	
+	script.
+		$("#tab4").closest("li").addClass( "active" );

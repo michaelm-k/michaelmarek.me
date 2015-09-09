@@ -1,0 +1,12 @@
+extends layout
+
+block title
+	title Projects | Michael Marek
+	
+block content
+	include projects.html
+	
+block append scripts	
+	script(type="text/javascript", src="/static/js/modal.js")
+	script.
+		$("#tab3").closest("li").addClass( "active" );
