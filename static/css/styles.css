@@ -188,6 +188,7 @@ span {
    height:50px; 
    background:#3B5998;  
    font-family: 'Lato', sans-serif;	
+   display:none;
 }
 
 .static-footer .text-muted {
