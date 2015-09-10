@@ -43,8 +43,8 @@ function loadContact() {
 }
 
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
-	event.preventDefault();
 	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
+		event.preventDefault();
 		if ($(this).closest("li").hasClass("active")) {	
 			if ($(window).scrollTop() !== 0 && scrolling==false) {
 				scrollTop();
