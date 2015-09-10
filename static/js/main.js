@@ -43,6 +43,7 @@ function loadContact() {
 }
 
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
+	event.preventDefault();
 	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
 		if ($(this).closest("li").hasClass("active")) {	
 			if ($(window).scrollTop() !== 0 && scrolling==false) {
@@ -51,7 +52,7 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 		} else {
 			if ($(event.target).closest("#tab1").length) {
 				$("#content").load("about #content", function() {
-					window.history.replaceState("", "", "/about");  
+					window.history.pushState({url:'about'}, "", "/about");  
 					document.title = "About | Michael Marek";
 					if ($(window).scrollTop() !== 0 && scrolling == false) {	
 						scrollTop();
@@ -59,7 +60,7 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				});	
 			} else if ($(event.target).closest("#tab3").length) {
 				$("#content").load("projects #content", function() {
-					window.history.replaceState("", "", "/projects");
+					window.history.pushState({url:'projects'}, "", "/projects");
 					document.title = "Projects | Michael Marek";		
 					if ($(window).scrollTop() !== 0 && scrolling == false) {	
 						scrollTop();
@@ -72,9 +73,9 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				});
 			} else if ($(event.target).closest("#tab4").length) {
 				$("#content").load("contact #content", function() {
-					$("#dave").css("opacity", 0);
-					window.history.replaceState("", "", "/contact");
+					window.history.pushState({url:'contact'}, "", "/contact");
 					document.title = "Contact | Michael Marek";	
+					$("#dave").css("opacity", 0);
 					loadContact();	
 					if ($(window).scrollTop() !== 0 && scrolling == false) {	
 						scrollTop();
@@ -84,5 +85,43 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 			$("li").removeClass( "active" );
 			$(this).closest("li").addClass( "active" );
 		}	
+	}
+});
+
+ $(window).bind('popstate', function(event){
+	var state = event.originalEvent.state;
+    if (state !== null) {
+		var url = state.url;
+		$("#content").load(url + " #content", function() {
+			$("li").removeClass( "active" );
+			if (url=='about') {
+				$("#tab1").parent().addClass( "active" );
+				document.title = "About | Michael Marek";
+				if ($(window).scrollTop() !== 0 && scrolling == false) {	
+					scrollTop();
+				}
+			} else if (url=='projects') {
+				$("#tab3").parent().addClass( "active" );
+				document.title = "Projects | Michael Marek";		
+				if ($(window).scrollTop() !== 0 && scrolling == false) {	
+					scrollTop();
+				}
+				$("#consilio, #rapitup").on("click", function(event) {
+					var id = $(this).attr('id');
+					$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
+					$('#imagemodal').modal('show');
+				});
+			} else if (url=='contact') {
+				$("#tab4").parent().addClass( "active" );
+				document.title = "Contact | Michael Marek";
+				$("#dave").css("opacity", 0);
+				loadContact();	
+				if ($(window).scrollTop() !== 0 && scrolling == false) {	
+					scrollTop();
+				}
+			}
+		});
+	} else {
+		window.location.href="/";
 	}
 });

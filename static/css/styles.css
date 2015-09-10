@@ -188,7 +188,6 @@ span {
    height:50px; 
    background:#3B5998;  
    font-family: 'Lato', sans-serif;	
-   display:none;
 }
 
 .static-footer .text-muted {
@@ -217,27 +216,15 @@ span {
 a.writer {
 	font-family: 'Permanent Marker', cursive;
 	text-decoration:none;
+	display:none;
 	opacity:0;
 	color: #000000;
-	cursor: default;
+	cursor: pointer;
 	font-size: 150%;
 }
 
 a.writer.active{
 	 color:#3B5998;	 
-}
-
-.skip_intro{
-	opacity:0;
-	text-decoration:none;
-	color: #000000;
-	cursor: default;
-	font-size: 150%;
-}
-
-.skip_intro.active{
-	color:#3B5998;	
-	text-decoration:none;
 }
 /* END: HOME */
 
