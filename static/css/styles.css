@@ -211,6 +211,7 @@ span {
 /* START: HOME */
 #name{
 	opacity:0;
+	margin-bottom: -1.5%;
 }
 
 a.writer {
