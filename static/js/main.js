@@ -53,12 +53,17 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				$("#content").load("about #content", function() {
 					window.history.replaceState("", "", "/about");  
 					document.title = "About | Michael Marek";
-				});
-				
+					if ($(window).scrollTop() !== 0 && scrolling == false) {	
+						scrollTop();
+					}
+				});	
 			} else if ($(event.target).closest("#tab3").length) {
 				$("#content").load("projects #content", function() {
-					window.history.replaceState("", "", "/projects"); // comment out during development
+					window.history.replaceState("", "", "/projects");
 					document.title = "Projects | Michael Marek";		
+					if ($(window).scrollTop() !== 0 && scrolling == false) {	
+						scrollTop();
+					}
 					$("#consilio, #rapitup").on("click", function(event) {
 						var id = $(this).attr('id');
 						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
@@ -68,13 +73,13 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 			} else if ($(event.target).closest("#tab4").length) {
 				$("#content").load("contact #content", function() {
 					$("#dave").css("opacity", 0);
-					window.history.replaceState("", "", "/contact"); // comment out during development
+					window.history.replaceState("", "", "/contact");
 					document.title = "Contact | Michael Marek";	
-					loadContact();				
+					loadContact();	
+					if ($(window).scrollTop() !== 0 && scrolling == false) {	
+						scrollTop();
+					}
 				});
-			}
-			if ($(window).scrollTop() !== 0 && scrolling == false) {	
-				scrollTop();
 			}
 			$("li").removeClass( "active" );
 			$(this).closest("li").addClass( "active" );
