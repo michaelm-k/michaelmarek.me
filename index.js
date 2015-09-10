@@ -39,3 +39,8 @@ var run_server = server.listen(port, function () {
 
   console.log('Listening at http://%s:%s', host, port);
 });
+
+// ping app every 5 min
+setInterval(function() {
+    http.get("https://michaelm-k.herokuapp.com");
+}, 300000);
