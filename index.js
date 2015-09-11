@@ -13,8 +13,8 @@ app.get('/', function (req, res) {
     res.render("index");
 });
 
-app.get('/oldbrowser?true', function (req, res) {
-    res.render("oldbrowser");
+app.get('/please_upgrade', function (req, res) {
+    res.render("please_upgrade");
 });
 
 app.get('/about', function (req, res) {

@@ -220,6 +220,13 @@ span {
 	margin-bottom: -1.5%;
 }
 
+@media (min-width:768px) {
+	#name {
+		width:600px;
+		height:330px;
+	}
+}
+
 a.writer {
 	font-family: 'Permanent Marker', cursive;
 	text-decoration:none;
@@ -247,17 +254,6 @@ a.writer.active{
 
 .content-text .fa-stack-overflow,.content-text .fa-github-square,.content-text .fa-linkedin-square {
 	margin:0 0 0 15px;
-}
-
-.aboutimg {
-	float:right;padding-left:20px;
-}
-
-.aboutimg #img{
-	width:500px;height:auto;float:right;clear:right;padding-bottom:5px;
-}
-.aboutimg #photocap{
-	display:block;font-style:italic;opacity:1;
 }
 
 .project-image-right {
@@ -313,22 +309,24 @@ a.writer.active{
 	float:right; 
 	width:490px; 
 	height:auto; 
-	margin:0 0 20px 0;
+	margin-bottom:20px;
+	margin-left:30px;
+}
+
+.about_img {
+	float:right;margin-left:30px;margin-bottom:20px;
+}
+
+.about_img #about_img{
+	width:500px;height:auto;
 }
 
 @media screen and (max-width:768px){
-	.project-image-right, #dave{
-		margin:0 0 30px 0;
-		float:none;padding-left:0;
-	}
 	#content{
 		padding-left:15px;padding-right:15px;
 	}	
-	.aboutimg #photocap {
-		padding-bottom:20px;
+	#dave, .about_img, .project-image-left, .project-image-right {
+		margin-left:0;
+		width:100%;
 	}
-	.aboutimg #img {
-		float:none;
-	}
-	.aboutimg{float:none;margin: 0 0 0 0; padding-left:0;}
 }
