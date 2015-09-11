@@ -13,6 +13,10 @@ app.get('/', function (req, res) {
     res.render("index");
 });
 
+app.get('/oldbrowser?true', function (req, res) {
+    res.render("oldbrowser");
+});
+
 app.get('/about', function (req, res) {
     res.render("about");
 });
