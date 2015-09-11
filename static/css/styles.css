@@ -41,7 +41,7 @@ span {
 /* START: HEADER */
 .navbar-inverse {
   background-color:#3B5998;
-  border-color: #bdbcae;
+  border-color: rgba(255,255,255,.7);
   opacity: 0.95;
   font-family: 'Lato', sans-serif;	
   font-size:16px;
@@ -102,7 +102,7 @@ span {
 
 #tab2:hover, #tab2:focus, #tab2:active,
 #tab5:hover, #tab5:focus, #tab5:active {
-	color: #bdbcae;
+	color: rgba(255,255,255,.7);
 	transition-duration: 200ms;
 }
 
@@ -115,7 +115,7 @@ span {
 
 .navbar-inverse .navbar-nav > li > a:not(#tab2):not(#tab5):hover ,
 .navbar-inverse .navbar-nav > li > a:not(#tab2):not(#tab5):focus  {
-	color: #bdbcae;
+	color: rgba(255,255,255,.7);
 	transition-duration: 200ms;
 	cursor:pointer;
 }
@@ -135,7 +135,7 @@ span {
 }
 
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:active {
-	color: #bdbcae;
+	color: rgba(255,255,255,.7);
 	transition-duration: 200ms;
 }
 
@@ -182,6 +182,7 @@ span {
 /* START: FOOTER */
 .static-footer {
    position:absolute;
+   color: #ffffff; 
    bottom:0;
    left:0;
    width:100%;
@@ -190,19 +191,24 @@ span {
    font-family: 'Lato', sans-serif;	
 }
 
-.static-footer .text-muted {
-  color: #ffffff; 
+.static-footer .copyright {
   margin-top: 17px;
 }
 
-.static-footer .text-primary{ 
+.static-footer .pull-right { 
   margin-top: -35px;
 }
 
 .static-footer .fa-soundcloud, .static-footer .fa-stack-overflow, .static-footer .fa-github-alt, .static-footer .fa-linkedin {
      color: #ffffff;
+	 transition-duration: 200ms;
 }
-
+.static-footer .fa-soundcloud:hover, .static-footer .fa-stack-overflow:hover, .static-footer .fa-github-alt:hover, .static-footer .fa-linkedin:hover,
+.static-footer .fa-soundcloud:focus, .static-footer .fa-stack-overflow:focus, .static-footer .fa-github-alt:focus, .static-footer .fa-linkedin:focus,
+.static-footer .fa-soundcloud:active, .static-footer .fa-stack-overflow:active, .static-footer .fa-github-alt:active, .static-footer .fa-linkedin:active  {
+     color: rgba(255,255,255,.7);
+	 transition-duration: 200ms;
+}
 .static-footer .fa-linkedin,.static-footer .fa-stack-overflow,.static-footer .fa-soundcloud {
 	margin:0 0 0 10px;
 }
