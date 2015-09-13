@@ -3,7 +3,8 @@ body {
    height:100%;
    font-family: 'Lato', sans-serif;
    position:relative;
-   overflow:visible;
+   overflow-y:visible;
+   overflow-x:hidden;
    z-index:1000;
 }
 
