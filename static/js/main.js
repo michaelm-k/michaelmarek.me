@@ -82,6 +82,8 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 					}
 				});
 			}
+			$("#content").css("padding-left",0);
+			$("#content").css("padding-right",0);
 			$("li").removeClass( "active" );
 			$(this).closest("li").addClass( "active" );
 		}	
@@ -121,6 +123,8 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				}
 			}
 		});
+		$("#content").css("padding-left",0);
+		$("#content").css("padding-right",0);
 	} else {
 		window.location.href="/";
 	}
