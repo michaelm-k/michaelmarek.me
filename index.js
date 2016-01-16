@@ -42,7 +42,7 @@ app.get('/contact', function (req, res) {
 });
 
 app.post('/contact', function (req, res) {
-	if (useNODEMAILER) {
+	if (!useNODEMAILER) {
 		var smtpConfig = {
 			host: 'smtp.gmail.com',
 			port: 465,
