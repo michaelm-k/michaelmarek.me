@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
-var env = require('env.js');
 var app = express();
 var port = process.env.PORT || 5000;
 var server = http.createServer(app);
@@ -15,6 +14,12 @@ app.set('views', __dirname + '/tpl');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.use("/static", express.static(__dirname + '/static'));
+
+var useNODEMAILER = false;
+app.configure('development', function(){
+	require('./env.js');
+	useNODEMAILER = true;
+});
 
 app.get('/', function (req, res) {
     res.render("index");
@@ -37,7 +42,30 @@ app.get('/contact', function (req, res) {
 });
 
 app.post('/contact', function (req, res) {
-	/* var payload   = {
+	if (useNODEMAILER) {
+		var smtpConfig = {
+			host: 'smtp.gmail.com',
+			port: 465,
+			secure: true, // use SSL
+			auth: {
+				user: process.env.USERNAME,
+				pass: process.env.PASSWORD
+			}
+		};
+		var smtpTransport = nodemailer.createTransport(smtpConfig);
+		var payload={
+			from: req.body.name,
+			subject: process.env.NODE_ENV,
+			to : 'michael.marem@gmail.com',
+			text : req.body.message
+		}
+		console.log(payload);
+		smtpTransport.sendMail(payload, function(error, info){
+			if (error) return console.log(error);
+			console.log("Message sent: " + info.message);
+		});
+		} else {
+			/* var payload   = {
 		to      : 'michael.marem@gmail.com',
 		from    : process.env.SENDER,
 		subject : 'Saying Hi',
@@ -47,28 +75,7 @@ app.post('/contact', function (req, res) {
 		if (err) { console.error(err); }
 		console.log(json);
 	}); */
-	
-	var smtpConfig = {
-		host: 'smtp.gmail.com',
-		port: 465,
-		secure: true, // use SSL
-		auth: {
-			user: process.env.USERNAME,
-			pass: process.env.PASSWORD
 		}
-	};
-	var smtpTransport = nodemailer.createTransport(smtpConfig);
-	var payload={
-		from: req.body.name,
-		subject: process.env.NODE_ENV,
-		to : 'michael.marem@gmail.com',
-		text : req.body.message
-	}
-	console.log(payload);
-	smtpTransport.sendMail(payload, function(error, info){
-		if (error) return console.log(error);
-		console.log("Message sent: " + info.message);
-	});
 });
 
 app.get('/annotation', function (req, res) {
