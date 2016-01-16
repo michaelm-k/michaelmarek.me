@@ -2,11 +2,16 @@ extends layout
 
 block title
 	title Contact | Michael Marek
+
+block append head
+	link(href="/static/css/form.css", rel="stylesheet")
 	
 block content
 	include contact.html
 
-block append scripts	
+block append scripts
+	script(type="text/javascript", src="/static/js/angular-replace-with.js")
+	script(type="text/javascript", src="/static/js/form.js")
 	script.
 		$("#tab4").closest("li").addClass( "active" );
 		window.history.pushState({url:'contact'}, "", "/contact");

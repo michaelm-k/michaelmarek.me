@@ -1,3 +1,5 @@
+var app = angular.module('site', []);
+
 /* START: NAVBAR TOGGLE BTN */
 $(".navbar-toggle").click(function() {
     if ($( ".navbar-toggle" ).hasClass( "collapsed" )) {
@@ -38,10 +40,15 @@ var scrollTop = function () {
 })();
 
 function loadContact() {
-	$("#dave").stop(true).animate( {opacity: "1"}, 2000); 	
+	//$("#dave").css("opacity", 0);
+	//$("#dave").stop(true).animate( {opacity: "1"}, 2000); 	
 	$(".content-text .fa-diamond, .content-text .fa-stack-overflow, .content-text .fa-linkedin-square, .content-text .fa-github-square").addClass("animated rubberBand");
 }
-
+app.directive('myDirective', function(){
+				
+			return {
+			restrict: 'AE',
+			compile: function(element, attrs){
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
 		event.preventDefault();
@@ -50,64 +57,47 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				scrollTop();
 			}	
 		} else {
-			if ($(event.target).closest("#tab1").length) {
-				$("#content").load("about #content", function() {
-					window.history.pushState({url:'about'}, "", "/about");  
-					document.title = "About | Michael Marek";
-					if ($(window).scrollTop() !== 0 && scrolling == false) {	
-						scrollTop();
-					}
-				});	
-			} else if ($(event.target).closest("#tab3").length) {
-				$("#content").load("projects #content", function() {
-					window.history.pushState({url:'projects'}, "", "/projects");
-					document.title = "Projects | Michael Marek";		
-					if ($(window).scrollTop() !== 0 && scrolling == false) {	
-						scrollTop();
-					}
+			var tab = $(event.target).html().toLowerCase();
+			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
+			element.load(tab + " #content", function() {
+				window.history.pushState({url:tab}, "", "/"+tab);  
+				document.title = tabCapitalized + " | Michael Marek";
+				if ($(event.target).closest("#tab3").length) {
 					$("#consilio, #rapitup").on("click", function(event) {
 						var id = $(this).attr('id');
 						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
 						$('#imagemodal').modal('show');
 					});
-				});
-			} else if ($(event.target).closest("#tab4").length) {
-				$("#content").load("contact #content", function() {
-					window.history.pushState({url:'contact'}, "", "/contact");
-					document.title = "Contact | Michael Marek";	
-					$("#dave").css("opacity", 0);
-					loadContact();	
-					if ($(window).scrollTop() !== 0 && scrolling == false) {	
-						scrollTop();
-					}
-				});
-			}
+				} else if ($(event.target).closest("#tab4").length) {
+					loadContact();
+				}
+				if ($(window).scrollTop() !== 0 && scrolling == false) {	
+					scrollTop();
+				}
+			});	
 			$("#content").css("padding-left",0);
 			$("#content").css("padding-right",0);
 			$("li").removeClass( "active" );
-			$(this).closest("li").addClass( "active" );
+			$(this).closest("li").addClass( "active" ); 
 		}	
 	}
 });
+}
+			}
+			});	
 
  $(window).bind('popstate', function(event){
 	var state = event.originalEvent.state;
     if (state !== null) {
-		var url = state.url;
+		var url = state.url; // 'about', 'projects', or 'contact'
+		var urlCapitalized = url.charAt(0).toUpperCase() + url.substr(1);
 		$("#content").load(url + " #content", function() {
 			$("li").removeClass( "active" );
+			document.title = urlCapitalized + " | Michael Marek";
 			if (url=='about') {
 				$("#tab1").parent().addClass( "active" );
-				document.title = "About | Michael Marek";
-				if ($(window).scrollTop() !== 0 && scrolling == false) {	
-					scrollTop();
-				}
 			} else if (url=='projects') {
-				$("#tab3").parent().addClass( "active" );
-				document.title = "Projects | Michael Marek";		
-				if ($(window).scrollTop() !== 0 && scrolling == false) {	
-					scrollTop();
-				}
+				$("#tab3").parent().addClass( "active" );		
 				$("#consilio, #rapitup").on("click", function(event) {
 					var id = $(this).attr('id');
 					$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
@@ -115,12 +105,10 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				});
 			} else if (url=='contact') {
 				$("#tab4").parent().addClass( "active" );
-				document.title = "Contact | Michael Marek";
-				$("#dave").css("opacity", 0);
 				loadContact();	
-				if ($(window).scrollTop() !== 0 && scrolling == false) {	
-					scrollTop();
-				}
+			}
+			if ($(window).scrollTop() !== 0 && scrolling == false) {	
+				scrollTop();
 			}
 		});
 		$("#content").css("padding-left",0);

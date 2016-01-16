@@ -1,16 +1,41 @@
-<div id = "content">
+<div id = "content" my-directive>
 	<h2>Contact</h2>
 	<hr>
 	<div>
-		<img id="dave" src="/static/img/creepin'.png" class="img-responsive" border="0">
-		<div class="content-text">
+		<!--<img id="dave" src="/static/img/creepin'.png" class="img-responsive" border="0">-->
+		
+		<div class="content-text contact">
 			<p><strong>Email</strong>: <a href="mailto:michael.marem@gmail.com" target="_top">michael.marem@gmail.com</a></p>
-			<p>Feel free to send me a message!</p>
+			<p>Feel free to send me a message >.></p>
 			<p>You can also reach me through any of the following sites:</p>		
 			<a href="https://genius.com/marem" target="_blank"><i class="fa fa-diamond fa-2x"></i></a>
 			<a href="https://stackoverflow.com/users/3390922/reachmm" target="_blank"><i class="fa fa-stack-overflow fa-3x"></i></a>
 			<a href="https://ca.linkedin.com/in/michaelmarek96" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
 			<a href="https://github.com/michaelm-k" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>			
+		</div>
+		
+		<div id="dave" data-ng-controller="formCtrl"> <!-- id is 'dave' cuz of css -->
+			<div id="alert" class="alert alert-success" data-ng-show="alert" data-ng-bind="alert"></div>
+			
+			<form name="form" novalidate role="form">
+				<div class="form-group">
+				<input type="text" name="name" data-ng-disabled="progress.active()" data-ng-model="name" data-ng-class="(submitted || form.name.$dirty) && form.name.$error.required ? 'form-control error' : 'form-control valid'" placeholder = "Name" required />
+				</div>
+
+				<div class="form-group">
+				<input type="email" name="email" data-ng-disabled="progress.active()" data-ng-model="email" data-ng-class="(submitted || form.email.$dirty) && (form.email.$error.required || form.$error.email) ? 'form-control error' : 'form-control valid'" placeholder = "Email" required />  
+				</div>
+	  
+				<div class="form-group">
+				<textarea name="message" data-ng-disabled="progress.active()" data-ng-model="message" data-ng-class="(submitted || form.message.$dirty) && form.message.$error.required ? 'form-control error' : 'form-control valid'" rows = "10" placeholder = "Message" required></textarea>
+				</div>
+	  
+				<div id="answer" class="form-group col-xs-4" style="padding-left:0px">
+				<input type = "text" name="answer" test="" data-ng-disabled="progress.active()" data-ng-model="answer" data-ng-class="(submitted || form.answer.$dirty) && (form.answer.$error.required || form.answer.$error.answerCorrect) ? 'form-control error' : 'form-control valid'" class = "form-control" placeholder = "" required answer-correct >
+				</div>
+
+				<button replace-with="Sending..." replace-when="progress.active()" data-ng-disabled="progress.active()" data-ng-click="submit(form)" class="btn btn-default pull-right" style="border-radius:0px">Send</button>
+			</form>
 		</div>
 	</div>
 </div>

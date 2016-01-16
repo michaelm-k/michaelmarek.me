@@ -139,6 +139,13 @@ span {
 	}
 }
 
+@media (min-width: 768px) {
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: -15px;
+}
+#music_icon {margin-right:-15px;}
+}
+
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse
 .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
 	background-color: #3B5998;
@@ -242,6 +249,11 @@ a.writer.active{
 	line-height:2.0;
 }
 
+.content-text.contact {
+	margin-bottom:40px;
+	float:left;
+}
+
 .content-text .fa-stack-overflow,.content-text .fa-github-square,.content-text .fa-linkedin-square {
 	margin:0 0 0 15px;
 }
@@ -301,6 +313,9 @@ a.writer.active{
 	height:auto; 
 	margin-bottom:20px;
 	margin-left:30px;
+	vertical-align: middle;
+	display:block;
+	max-width:100%;
 }
 
 .about_img {

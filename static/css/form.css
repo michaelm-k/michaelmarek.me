@@ -1,0 +1,103 @@
+/* Contact Form */
+.contact-form {
+    text-align: left;
+}
+    
+    /* Title */
+    .contact-form h3 {
+        font-size: 1.158em;
+        color: #fff;
+        padding: 10px 0;
+    }
+
+    /* Button */
+    .contact-form .btn-default, .contact-form .btn-default[disabled] {
+        background: #2a2929;
+        border-color: #2a2929;
+        color: #fff;
+        border-radius: 0;
+    }
+        
+        /* Button - focus and clicked */
+        .contact-form .btn-default:focus { 
+            outline: none; 
+            box-shadow: inset 0 2px 2px 3px rgba(0, 0, 0, 0.125);
+        }
+
+    /* Form group - smaller input */
+    .contact-form .form-group {
+        padding-left: 0;
+    }
+
+        /* Smaller input - background */
+        .contact-form .col-xs-4 .form-control {
+            background-position: 94%;
+        }
+
+        /* Smaller input - background focus*/
+        .contact-form .col-xs-4 .form-control:focus {
+            background-position: 94%;
+        }
+
+    /* Alert */
+    .contact-form .alert {
+            display: none;
+            font-size: 0.75em;
+            position: absolute;
+            top: 15em;
+            left: 20px;
+            right: 20px;
+        }
+
+        /* Message sent successfully */
+        .contact-form .alert.alert-success {
+            background: #8fe589;
+            border-color: #8fe589;
+        }
+
+        /* Message sent unsuccessfully */
+        .contact-form .alert.alert-danger {
+            background: #f2777a;
+            border-color: #f2777a;
+        }
+
+/* form-control */
+.form-control {
+    background: #eeeeee;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    resize: none;
+    padding-right: 25px;
+    
+    -webkit-transition: background-color 0.25s;
+       -moz-transition: background-color 0.25s;
+         -o-transition: background-color 0.25s;
+            transition: background-color 0.25s;
+}
+    
+.form-control:focus {
+    background: #fff;
+}
+
+.form-control.valid {
+    background: #eeeeee;
+}
+
+.form-control.valid:focus {
+    background-color: #fff;
+}
+
+.form-control.error {
+    background: #f9bbb8;
+}
+        
+.form-control.error:focus {
+    background-color: #f9bbb8;
+}
+
+@media screen and (max-width:510px){
+	#answer {
+		width:65%;
+	}
+}

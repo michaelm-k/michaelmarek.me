@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
-	"jade": "1.11.0"
+    "jade": "1.11.0",
+    "sendgrid": "^2.0.0"
   },
   "engines": {
     "node": "0.10.35"
