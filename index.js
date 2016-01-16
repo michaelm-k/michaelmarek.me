@@ -16,10 +16,10 @@ app.engine('jade', require('jade').__express);
 app.use("/static", express.static(__dirname + '/static'));
 
 var useNODEMAILER = false;
-app.configure('development', function(){
+if (!process.env.NODE_ENV) {
 	require('./env.js');
 	useNODEMAILER = true;
-});
+}
 
 app.get('/', function (req, res) {
     res.render("index");
