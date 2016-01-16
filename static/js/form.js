@@ -32,12 +32,8 @@ app
 			},
 		};
 		
-	var $promise = $http({
-		method : 'POST',
-        url : '/contact',
-        data: config,
-        headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}  
-	})
+	var $promise = $http
+	.post('/contact', {name: $scope.name, email: $scope.email, message: $scope.message})
     .success(function(data, status, headers, config) {
       if (data.status == 'OK') {
         $scope.name = null;
@@ -46,10 +42,10 @@ app
 		$scope.answer = null;
 		setContactQuestion();
 			
-        $scope.alert = 'Your form has been sent!';
+        $scope.alert = 'Your message has been sent!';
         $scope.submitted = false;
       } else {
-        $scope.alert = 'Oops, we received your request, but there was an error processing it. Try resending :S';
+        $scope.alert = 'Shit, something went wrong. Try again later.';
         $log.error(data);
       }
     })

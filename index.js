@@ -1,10 +1,15 @@
 var express = require('express');
 var http = require('http');
+var bodyParser = require('body-parser');
+var env = require('./env.js');
 var app = express();
 var port = process.env.PORT || 5000;
 var server = http.createServer(app);
 
+var nodemailer = require("nodemailer");
 var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+
+app.use(bodyParser());
 
 app.set('views', __dirname + '/tpl');
 app.set('view engine', "jade");
@@ -32,8 +37,8 @@ app.get('/contact', function (req, res) {
 });
 
 app.post('/contact', function (req, res) {
-	var payload   = {
-		to      : process.env.RECIPIENT,
+	/* var payload   = {
+		to      : 'michael.marem@gmail.com',
 		from    : process.env.SENDER,
 		subject : 'Saying Hi',
 		text    : 'This is my first email through SendGrid'
@@ -41,6 +46,28 @@ app.post('/contact', function (req, res) {
 	sendgrid.send(payload, function(err, json) {
 		if (err) { console.error(err); }
 		console.log(json);
+	}); */
+	
+	var smtpConfig = {
+		host: 'smtp.gmail.com',
+		port: 465,
+		secure: true, // use SSL
+		auth: {
+			user: process.env.USERNAME,
+			pass: process.env.PASSWORD
+		}
+	};
+	var smtpTransport = nodemailer.createTransport(smtpConfig);
+	var payload={
+		from: req.body.name,
+		subject: process.env.NODE_ENV,
+		to : 'michael.marem@gmail.com',
+		text : req.body.message
+	}
+	console.log(payload);
+	smtpTransport.sendMail(payload, function(error, info){
+		if (error) return console.log(error);
+		console.log("Message sent: " + info.message);
 	});
 });
 
