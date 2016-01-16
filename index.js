@@ -42,7 +42,7 @@ app.get('/contact', function (req, res) {
 });
 
 app.post('/contact', function (req, res) {
-	if (!useNODEMAILER) {
+	if (useNODEMAILER) {
 		var smtpConfig = {
 			host: 'smtp.gmail.com',
 			port: 465,
@@ -65,16 +65,16 @@ app.post('/contact', function (req, res) {
 			console.log("Message sent: " + info.message);
 		});
 		} else {
-			/* var payload   = {
-		to      : 'michael.marem@gmail.com',
-		from    : process.env.SENDER,
-		subject : 'Saying Hi',
-		text    : 'This is my first email through SendGrid'
-	}
-	sendgrid.send(payload, function(err, json) {
-		if (err) { console.error(err); }
-		console.log(json);
-	}); */
+			var payload   = {
+				to      : 'michael.marem@gmail.com',
+				from    : process.env.SENDER,
+				subject : 'Saying Hi',
+				text    : 'This is my first email through SendGrid'
+			}
+			sendgrid.send(payload, function(err, json) {
+				if (err) { console.error(err); }
+				console.log(json);
+			});
 		}
 });
 
