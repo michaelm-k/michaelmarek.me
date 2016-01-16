@@ -33,8 +33,8 @@ app.get('/contact', function (req, res) {
 
 app.post('/contact', function (req, res) {
 	var payload   = {
-		to      : process.env.SENDER,
-		from    : process.env.RECIPIENT,
+		to      : process.env.RECIPIENT,
+		from    : process.env.SENDER,
 		subject : 'Saying Hi',
 		text    : 'This is my first email through SendGrid'
 	}
