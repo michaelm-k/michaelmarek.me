@@ -3,7 +3,7 @@ doctype html
 script.
 	window.location.href="/please_upgrade";
 <![endif]-->
-html
+html(data-ng-app="site")
 	head
 		block title
 			title Michael Marek
@@ -19,8 +19,9 @@ html
 			link(href="/static/css/bootstrap.css", rel="stylesheet")
 			link(href="/static/css/font-awesome.css", rel="stylesheet")
 			link(href="/static/css/animate.css", rel="stylesheet")
+			
 			link(href="/static/css/styles.css", rel="stylesheet")
-	body(data-ng-app="site")
+	body
 		.custom-wrapper
 			include navbar.html
 			.container.pad-container
@@ -31,8 +32,12 @@ html
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js")
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js")
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js")
+			script(type="text/javascript", src="https://code.angularjs.org/1.2.16/angular-route.js")
+			
 			script(type="text/javascript", src="/static/js/bootstrap.js")
 			script(type="text/javascript", src="/static/js/promise-tracker.js")
+			script(type="text/javascript", src="/static/js/angular-replace-with.js")
+			
 			script(async src="https://genius.codes")
 			
 			script(type="text/javascript", src="/static/js/main.js")

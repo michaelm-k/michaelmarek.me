@@ -2,17 +2,27 @@
  * AngularJS module to process a form.
  * https://www.lullabot.com/articles/processing-forms-in-angularjs
  */
-var app = angular.module('site', ['ajoslin.promise-tracker', 'ui.replaceWith']);
+ 
+ var app;
+ 
+ try {
+    app = angular.module('site');
+  } 
+  catch(e) {
+    app = angular.module('site', ['ajoslin.promise-tracker', 'ui.replaceWith']);
+  }
 
 app
   .controller('formCtrl', function ($scope, $http, $log, promiseTracker, $timeout) {
     // Initiate the promise tracker to track form submissions.
     $scope.progress = promiseTracker();
-	
+
 	setContactQuestion();
 	
     // Form submit handler.
-    $scope.submit = function(form) {
+    $scope.submit = function(form, $event) {
+		$event.preventDefault();
+		
 		// Trigger validation flag.
 		$scope.submitted = true;
 		

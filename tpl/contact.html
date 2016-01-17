@@ -1,4 +1,4 @@
-<div id = "content" my-directive>
+<div id = "content">
 	<h2>Contact</h2>
 	<hr>
 	<div>
@@ -17,7 +17,7 @@
 		<div id="dave" data-ng-controller="formCtrl"> <!-- id is 'dave' cuz of css -->
 			<div id="alert" class="alert alert-success" data-ng-show="alert" data-ng-bind="alert"></div>
 			
-			<form name="form" novalidate role="form">
+			<form name="form" data-ng-submit="submit(form, $event)" role="form" novalidate>
 				<div class="form-group">
 				<input type="text" name="name" data-ng-disabled="progress.active()" data-ng-model="name" data-ng-class="(submitted || form.name.$dirty) && form.name.$error.required ? 'form-control error' : 'form-control valid'" placeholder = "Name" required />
 				</div>
@@ -31,10 +31,10 @@
 				</div>
 	  
 				<div id="answer" class="form-group col-xs-4" style="padding-left:0px">
-				<input type = "text" name="answer" test="" data-ng-disabled="progress.active()" data-ng-model="answer" data-ng-class="(submitted || form.answer.$dirty) && (form.answer.$error.required || form.answer.$error.answerCorrect) ? 'form-control error' : 'form-control valid'" class = "form-control" placeholder = "" required answer-correct >
+				<input type="text" name="answer" test="" data-ng-disabled="progress.active()" data-ng-model="answer" data-ng-class="(submitted || form.answer.$dirty) && (form.answer.$error.required || form.answer.$error.answerCorrect) ? 'form-control error' : 'form-control valid'" class = "form-control" placeholder = "" required answer-correct >
 				</div>
 
-				<button replace-with="Sending..." replace-when="progress.active()" data-ng-disabled="progress.active()" data-ng-click="submit(form)" class="btn btn-default pull-right" style="border-radius:0px">Send</button>
+				<button type="submit" replace-with="Sending..." replace-when="progress.active()" data-ng-disabled="progress.active()" class="btn btn-default pull-right" style="border-radius:0px">Send</button>
 			</form>
 		</div>
 	</div>

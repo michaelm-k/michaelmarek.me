@@ -10,8 +10,8 @@ block content
 	include contact.html
 
 block append scripts
-	script(type="text/javascript", src="/static/js/angular-replace-with.js")
 	script(type="text/javascript", src="/static/js/form.js")
 	script.
-		$("#tab4").closest("li").addClass( "active" );
+		// executed on page refresh
+		$("#tab4").closest("li").addClass( "active" ); 
 		window.history.pushState({url:'contact'}, "", "/contact");

@@ -1,5 +1,3 @@
-var app = angular.module('site', []);
-
 /* START: NAVBAR TOGGLE BTN */
 $(".navbar-toggle").click(function() {
     if ($( ".navbar-toggle" ).hasClass( "collapsed" )) {
@@ -44,11 +42,8 @@ function loadContact() {
 	//$("#dave").stop(true).animate( {opacity: "1"}, 2000); 	
 	$(".content-text .fa-diamond, .content-text .fa-stack-overflow, .content-text .fa-linkedin-square, .content-text .fa-github-square").addClass("animated rubberBand");
 }
-app.directive('myDirective', function(){
-				
-			return {
-			restrict: 'AE',
-			compile: function(element, attrs){
+var app = angular.module('site', ['ajoslin.promise-tracker', 'ui.replaceWith', 'ngRoute']);
+
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
 		event.preventDefault();
@@ -59,7 +54,7 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 		} else {
 			var tab = $(event.target).html().toLowerCase();
 			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
-			element.load(tab + " #content", function() {
+			$("#content").load(tab + " #content", function() {
 				window.history.pushState({url:tab}, "", "/"+tab);  
 				document.title = tabCapitalized + " | Michael Marek";
 				if ($(event.target).closest("#tab3").length) {
@@ -82,9 +77,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 		}	
 	}
 });
-}
-			}
-			});	
 
  $(window).bind('popstate', function(event){
 	var state = event.originalEvent.state;
@@ -117,3 +109,94 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 		window.location.href="/";
 	}
 });
+
+app
+  .controller('formCtrl', function ($scope, $http, $log, promiseTracker, $timeout) {
+	  alert('working');
+    // Initiate the promise tracker to track form submissions.
+    $scope.progress = promiseTracker();
+
+	setContactQuestion();
+	
+    // Form submit handler.
+    $scope.submit = function(form, $event) {
+		$event.preventDefault();
+		
+		// Trigger validation flag.
+		$scope.submitted = true;
+		
+		// If form is invalid, return and let AngularJS show validation errors.
+		if (form.$invalid) {
+			return;
+		}
+
+		// Default values for the request.
+		var config = {
+			params : {
+				'name' : $scope.name,
+				'email' : $scope.email,
+				'message' : $scope.message,
+				'answer' : $scope.answer
+			},
+		};
+		
+		var $promise = $http
+		.post('/contact', {name: $scope.name, email: $scope.email, message: $scope.message})
+		.success(function(response) {
+			if (response.status == 200) {
+				$scope.name = null;
+				$scope.email = null;
+				$scope.message = null;
+				$scope.answer = null;
+				setContactQuestion();
+		
+				$scope.form.$setPristine();
+				$scope.alert = 'Your message has been sent!';
+				$scope.submitted = false;
+			} else {
+				$scope.alert = 'Shit, something went wrong. Try again later.';
+			}
+		})
+		.error(function(data, status, headers, config) {
+			$scope.progress = data;
+			$scope.alert = 'There was a network error. Try again later.';
+			$log.error(data);
+		})
+		.finally(function() {
+			// Hide status messages after three seconds.
+			$timeout(function() {
+				$scope.alert = null;
+			}, 3000);
+		});
+		// Track the request and show its progress to the user.
+		$scope.progress.addPromise($promise);
+    };
+});
+
+function setContactQuestion() {
+    var random1 = randomInt(1, 10);
+    var random2 = randomInt(1, 10);
+        
+    document.getElementsByName('answer')[0].placeholder = 'What is ' + random1 + ' + ' + random2 + '?';
+    document.getElementsByName('answer')[0].test = random1+random2;
+}
+
+app.directive('answerCorrect', function() { // returns a directive definition object
+	return {
+		require: 'ngModel',
+		link: function(scope, elm, attrs, ctrl) {
+			ctrl.$parsers.unshift(checkAnswer);
+			ctrl.$formatters.unshift(checkAnswer);
+	
+			function checkAnswer(viewValue){
+				var valid = viewValue == document.getElementsByName('answer')[0].test;
+				ctrl.$setValidity('answerCorrect', valid); // tell controller that viewValue is valid	
+				return valid ? viewValue : undefined; // return 'undefined' if viewValue is invalid, otherwise return viewValue
+			}	
+		}
+	};
+});
+
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
