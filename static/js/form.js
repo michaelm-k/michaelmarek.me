@@ -24,7 +24,6 @@ app
 		// Default values for the request.
 		var config = {
 			params : {
-				//'callback' : 'JSON_CALLBACK',
 				'name' : $scope.name,
 				'email' : $scope.email,
 				'message' : $scope.message,
@@ -32,68 +31,38 @@ app
 			},
 		};
 		
-	var $promise = $http
-	.post('/contact', {name: $scope.name, email: $scope.email, message: $scope.message})
-    .success(function(data, status, headers, config) {
-      if (data.status == 'OK') {
-        $scope.name = null;
-        $scope.email = null;
-        $scope.message = null;
-		$scope.answer = null;
-		setContactQuestion();
-			
-        $scope.alert = 'Your message has been sent!';
-        $scope.submitted = false;
-      } else {
-        $scope.alert = 'Shit, something went wrong. Try again later.';
-        $log.error(data);
-      }
-    })
-    .error(function(data, status, headers, config) {
-      $scope.progress = data;
-      $scope.alert = 'There was a network error. Try again later.';
-      $log.error(data);
-    })
-	.finally(function() {
-          // Hide status messages after three seconds.
-        $timeout(function() {
-			$scope.alert = null;
-		}, 3000);
-    });
+		var $promise = $http
+		.post('/contact', {name: $scope.name, email: $scope.email, message: $scope.message})
+		.success(function(response) {
+			if (response.status == 200) {
+				$scope.name = null;
+				$scope.email = null;
+				$scope.message = null;
+				$scope.answer = null;
+				setContactQuestion();
 		
-      // Perform JSONP request.
-      /* var $promise = $http.jsonp('response.json', config)
-        .success(function(data, status, headers, config) {
-          if (data.status == 'OK') {
-            $scope.name = null;
-            $scope.email = null;
-            $scope.message = null;
-			$scope.answer = null;
-			setContactQuestion();
-			
-            $scope.alert = 'Your form has been sent!';
-            $scope.submitted = false;
-          } else {
-            $scope.alert = 'Oops, we received your request, but there was an error processing it. Try resending :S';
-            $log.error(data);
-          }
-        })
-        .error(function(data, status, headers, config) {
-          $scope.progress = data;
-          $scope.alert = 'There was a network error. Try again later.';
-          $log.error(data);
-        })
-        .finally(function() {
-          // Hide status messages after three seconds.
-          $timeout(function() {
-            $scope.alert = null;
-          }, 3000);
-        }); */
-
-      // Track the request and show its progress to the user.
-      $scope.progress.addPromise($promise);
+				$scope.form.$setPristine();
+				$scope.alert = 'Your message has been sent!';
+				$scope.submitted = false;
+			} else {
+				$scope.alert = 'Shit, something went wrong. Try again later.';
+			}
+		})
+		.error(function(data, status, headers, config) {
+			$scope.progress = data;
+			$scope.alert = 'There was a network error. Try again later.';
+			$log.error(data);
+		})
+		.finally(function() {
+			// Hide status messages after three seconds.
+			$timeout(function() {
+				$scope.alert = null;
+			}, 3000);
+		});
+		// Track the request and show its progress to the user.
+		$scope.progress.addPromise($promise);
     };
-  });
+});
 
 function setContactQuestion() {
     var random1 = randomInt(1, 10);

@@ -15,10 +15,10 @@ app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.use("/static", express.static(__dirname + '/static'));
 
-var useNODEMAILER = false;
+var inDevMode = false;
 if (!process.env.NODE_ENV) {
 	require('./env.js');
-	useNODEMAILER = true;
+	inDevMode=true;
 }
 
 app.get('/', function (req, res) {
@@ -42,7 +42,7 @@ app.get('/contact', function (req, res) {
 });
 
 app.post('/contact', function (req, res) {
-	if (useNODEMAILER) {
+	if (inDevMode) {
 		var smtpConfig = {
 			host: 'smtp.gmail.com',
 			port: 465,
@@ -53,29 +53,39 @@ app.post('/contact', function (req, res) {
 			}
 		};
 		var smtpTransport = nodemailer.createTransport(smtpConfig);
-		var payload={
-			from: req.body.name,
-			subject: process.env.NODE_ENV,
-			to : 'michael.marem@gmail.com',
-			text : req.body.message
+		var payload = {
+			from	: req.body.name,
+			subject	: req.body.email,
+			to 		: 'michael.marem@gmail.com',
+			text 	: req.body.message
 		}
 		console.log(payload);
 		smtpTransport.sendMail(payload, function(error, info){
-			if (error) return console.log(error);
-			console.log("Message sent: " + info.message);
-		});
-		} else {
-			var payload   = {
-				to      : 'michael.marem@gmail.com',
-				from    : process.env.SENDER,
-				subject : 'Saying Hi',
-				text    : 'This is my first email through SendGrid'
+			if (error) {
+				res.json({status: 500});
+				console.log(error);
+			} else {
+				res.json({status: 200});
+				console.log("Message sent: " + info.message);
 			}
-			sendgrid.send(payload, function(err, json) {
-				if (err) { console.error(err); }
-				console.log(json);
-			});
+		});
+	} else {
+		var payload = {
+			to      : 'michael.marem@gmail.com',
+			from    : process.env.SENDER,
+			subject : req.body.name + ' <' + req.body.email + '>',
+			text    : req.body.message
 		}
+		sendgrid.send(payload, function(err, json) {
+			if (err) { 
+				res.json({status: 500});
+				console.error(err); 
+			} else {
+				res.json({status: 200});
+			}
+			console.log(json);
+		});
+	}
 });
 
 app.get('/annotation', function (req, res) {
