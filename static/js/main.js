@@ -42,7 +42,7 @@ function loadContact() {
 	//$("#dave").stop(true).animate( {opacity: "1"}, 2000); 	
 	$(".content-text .fa-diamond, .content-text .fa-stack-overflow, .content-text .fa-linkedin-square, .content-text .fa-github-square").addClass("animated rubberBand");
 }
-var app = angular.module('site', ['ajoslin.promise-tracker', 'ui.replaceWith', 'ngRoute']);
+var app = angular.module('site', ['ajoslin.promise-tracker', 'ui.replaceWith']);
 
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
