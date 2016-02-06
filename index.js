@@ -78,7 +78,7 @@ app.post('/contact', function (req, res) {
 		}
 		sendgrid.send(payload, function(err, json) {
 			if (err) { 
-				res.json({status: 500});
+				res.json({status: 500,test: payload});
 				console.error(err); 
 			} else {
 				res.json({status: 202});
