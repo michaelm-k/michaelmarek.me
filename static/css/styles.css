@@ -307,7 +307,7 @@ a.writer.active{
 	transition-duration: 200ms;
 }
 
-#dave, .contact-form {
+#dave {
 	float:right; 
 	width:490px; 
 	height:auto; 
