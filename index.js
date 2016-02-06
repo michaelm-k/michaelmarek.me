@@ -65,7 +65,7 @@ app.post('/contact', function (req, res) {
 				res.json({status: 500});
 				console.log(error);
 			} else {
-				res.json({status: 200});
+				res.json({status: 202});
 				console.log("Message sent: " + info.message);
 			}
 		});
@@ -81,7 +81,7 @@ app.post('/contact', function (req, res) {
 				res.json({status: 500});
 				console.error(err); 
 			} else {
-				res.json({status: 200});
+				res.json({status: 202});
 			}
 			console.log(json);
 		});

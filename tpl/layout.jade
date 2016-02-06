@@ -3,7 +3,7 @@ doctype html
 script.
 	window.location.href="/please_upgrade";
 <![endif]-->
-html(data-ng-app="site")
+html
 	head
 		block title
 			title Michael Marek
@@ -31,11 +31,9 @@ html(data-ng-app="site")
 		block scripts
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js")
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js")
-			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js")
+			script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js")
 			
 			script(type="text/javascript", src="/static/js/bootstrap.js")
-			script(type="text/javascript", src="/static/js/promise-tracker.js")
-			script(type="text/javascript", src="/static/js/angular-replace-with.js")
 			
 			script(async src="https://genius.codes")
 			

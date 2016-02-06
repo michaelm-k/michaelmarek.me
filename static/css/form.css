@@ -1,65 +1,28 @@
-/* Contact Form */
-.contact-form {
-    text-align: left;
+@media screen and (max-width:1106px){		
+	.contact-form {
+		margin-left:0;
+		width:100%;
+	}
 }
-    
-    /* Title */
-    .contact-form h3 {
-        font-size: 1.158em;
-        color: #fff;
-        padding: 10px 0;
-    }
+       
+.contact-form .alert {
+    display: none;
+    font-size: 0.75em;
+    top: 15em;
+    left: 20px;
+    right: 20px;
+	font-size:12px;
+}
 
-    /* Button */
-    .contact-form .btn-default, .contact-form .btn-default[disabled] {
-        background: #2a2929;
-        border-color: #2a2929;
-        color: #fff;
-        border-radius: 0;
-    }
-        
-        /* Button - focus and clicked */
-        .contact-form .btn-default:focus { 
-            outline: none; 
-            box-shadow: inset 0 2px 2px 3px rgba(0, 0, 0, 0.125);
-        }
+.contact-form .alert.alert-success {
+     background: #8fe589;
+     border-color: #8fe589;
+}
 
-    /* Form group - smaller input */
-    .contact-form .form-group {
-        padding-left: 0;
-    }
-
-        /* Smaller input - background */
-        .contact-form .col-xs-4 .form-control {
-            background-position: 94%;
-        }
-
-        /* Smaller input - background focus*/
-        .contact-form .col-xs-4 .form-control:focus {
-            background-position: 94%;
-        }
-
-    /* Alert */
-    .contact-form .alert {
-            display: none;
-            font-size: 0.75em;
-            position: absolute;
-            top: 15em;
-            left: 20px;
-            right: 20px;
-        }
-
-        /* Message sent successfully */
-        .contact-form .alert.alert-success {
-            background: #8fe589;
-            border-color: #8fe589;
-        }
-
-        /* Message sent unsuccessfully */
-        .contact-form .alert.alert-danger {
-            background: #f2777a;
-            border-color: #f2777a;
-        }
+.contact-form .alert.alert-danger {
+     background: #f2777a;
+     border-color: #f2777a;
+}
 
 /* form-control */
 .form-control {
