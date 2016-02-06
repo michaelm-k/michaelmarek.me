@@ -24,12 +24,16 @@ $('#contact').validate({
 			type: $(form).attr('method'),
 			data: $(form).serialize(),
 			success: function(response) {
-				$('#contact').trigger('reset');
+				if (response.status==200) {
+					$('#contact').trigger('reset');
+					setContactQuestion();	
+					$('#contact-success').fadeIn();	
+				} else {
+					$('#contact-error').fadeIn();	
+				}
 				$('#contact .form-control').removeClass('valid');
-				setContactQuestion();			
 				$('#contact :input').prop('disabled', false);
-				$('.contact-form .btn-default').text('Send');
-				$('#contact-success').fadeIn();			
+				$('.contact-form .btn-default').text('Send');				
 			},
 			error: function() {
 				$('#contact-error').fadeIn();
