@@ -19,12 +19,15 @@ $('#contact').validate({
 	submitHandler: function(form) {
 		$('#contact :input').prop('disabled', true);
 		$('.contact-form .btn-default').text('Sending...');
+		var name = $('[name=name]').val();
+		var email = $('[name=email]').val();
+		var message = $('[name=message]').val();
 		$.ajax({
 			url: $(form).attr('action'),
 			type: $(form).attr('method'),
-			data: $(form).serialize(),
+			data: {name: name, email: email, message: message},
 			success: function(response) {
-				if (response.status==200) {
+				if (response.status==202) {
 					$('#contact').trigger('reset');
 					setContactQuestion();	
 					$('#contact-success').fadeIn();	
