@@ -87,17 +87,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				if ($(window).scrollTop() !== 0 && scrolling == false) {	
 					scrollTop();
 				}
-				
-				$.getScript("https://genius.codes")
-		.done(function(data, textStatus, jqxhr) {
-			/* console.log(data); // Data returned
-			console.log(textStatus); // Success
-			console.log(jqxhr.status); // 200
-			console.log("Load was performed."); */
-		})
-		.fail(function() {
-			location.reload();
-		});
 			});	
 			$("#content").css("padding-left",0);
 			$("#content").css("padding-right",0);
