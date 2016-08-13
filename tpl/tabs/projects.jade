@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block title
 	title Projects | Michael Marek
@@ -10,5 +10,5 @@ block append scripts
 	script(type="text/javascript", src="/static/js/modal.js")
 	script.
 		// executed on page refresh
-		$("#tab3").closest("li").addClass( "active" );
+		$("#tab3").closest("li").addClass("active");
 		window.history.pushState({url:'projects'}, "", "/projects");

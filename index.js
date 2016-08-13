@@ -29,16 +29,30 @@ app.get('/please_upgrade', function (req, res) {
     res.render("please_upgrade");
 });
 
+app.get('/annotation', function (req, res) {
+    res.render("annotation");
+});
+
+app.get('/player', function (req, res) {
+    res.render("player");
+});
+
+/* TABS */
+
 app.get('/about', function (req, res) {
-    res.render("about");
+    res.render("tabs/about");
 });
 
 app.get('/projects', function (req, res) {
-    res.render("projects");
+    res.render("tabs/projects");
+});
+
+app.get('/courses', function (req, res) {
+    res.render("tabs/courses");
 });
 
 app.get('/contact', function (req, res) {
-    res.render("contact");
+    res.render("tabs/contact");
 });
 
 app.post('/contact', function (req, res) {
@@ -88,13 +102,7 @@ app.post('/contact', function (req, res) {
 	}
 });
 
-app.get('/annotation', function (req, res) {
-    res.render("annotation");
-});
-
-app.get('/player', function (req, res) {
-    res.render("player");
-});
+/* end TABS */
 
 var run_server = server.listen(port, function () {
   var host = run_server.address().address;

@@ -11,10 +11,8 @@ html
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		block head
-			link(href='https://fonts.googleapis.com/css?family=Open+Sans:600', rel='stylesheet', type='text/css')
-			link(href='https://fonts.googleapis.com/css?family=Lato', rel='stylesheet', type='text/css')
 			link(href='https://fonts.googleapis.com/css?family=Permanent+Marker', rel='stylesheet', type='text/css')
-			link(href='https://fonts.googleapis.com/css?family=Adamina', rel='stylesheet', type='text/css')
+			link(href='https://fonts.googleapis.com/css?family=Nunito:300', rel='stylesheet', type='text/css')
 		
 			link(href="/static/css/bootstrap.css", rel="stylesheet")
 			link(href="/static/css/font-awesome.css", rel="stylesheet")
@@ -26,6 +24,7 @@ html
 			include navbar.html
 			.container.pad-container
 				block content
+				hr(style="clear:both")
 				include footer.html
 		
 		block scripts

@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block title
 	title About | Michael Marek
@@ -9,5 +9,5 @@ block content
 block append scripts	
 	script.
 		// executed on page refresh
-		$("#tab1").closest("li").addClass( "active" );
+		$("#tab1").closest("li").addClass("active");
 		window.history.pushState({url:'about'}, "", "/about");

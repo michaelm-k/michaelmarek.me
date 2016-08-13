@@ -1,11 +1,11 @@
 /* START: NAVBAR TOGGLE BTN */
 $(".navbar-toggle").click(function() {
-    if ($( ".navbar-toggle" ).hasClass( "collapsed" )) {
+    if ($(".navbar-toggle").hasClass("collapsed")) {
 		$(this).addClass("menuActive");
-		$( ".navbar-inverse" ).css( "opacity", "1" ); 
+		$(".navbar-inverse").css("opacity", "1"); 
 	} else {	
 		$(this).removeClass("menuActive");	
-		$( ".navbar-inverse" ).css( "opacity", "0.95" ); 
+		$(".navbar-inverse").css("opacity", "0.95"); 
 	}	
 });
 
@@ -29,7 +29,7 @@ var scrollTop = function () {
     var timer;
     $(window).bind("scroll",function () {
         clearTimeout(timer);
-        timer = setTimeout( refresh , 150 );
+        timer = setTimeout(refresh , 150);
 		scrolling=true;
     });
     var refresh = function () { 
@@ -63,7 +63,7 @@ function loadContact() {
 }
 
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
-	if (!$(event.target).closest("#tab2").length && !$(event.target).closest("#tab5").length) {
+	if (!($(event.target).closest("#tab2").length || $(event.target).closest("#tab5").length)) { // specific
 		event.preventDefault();
 		if ($(this).closest("li").hasClass("active")) {	
 			if ($(window).scrollTop() !== 0 && scrolling==false) {
@@ -75,6 +75,8 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 			$("#content").load(tab + " #content", function() {
 				window.history.pushState({url:tab}, "", "/"+tab);  
 				document.title = tabCapitalized + " | Michael Marek";
+				
+				// specific code
 				if ($(event.target).closest("#tab3").length) {
 					$("#consilio, #rapitup").on("click", function(event) {
 						var id = $(this).attr('id');
@@ -84,6 +86,7 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				} else if ($(event.target).closest("#tab4").length) {
 					loadContact();
 				}
+				
 				if ($(window).scrollTop() !== 0 && scrolling == false) {	
 					scrollTop();
 				}
@@ -99,24 +102,35 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
  $(window).bind('popstate', function(event){
 	var state = event.originalEvent.state;
     if (state !== null) {
-		var url = state.url; // 'about', 'projects', or 'contact'
+		var url = state.url;
 		var urlCapitalized = url.charAt(0).toUpperCase() + url.substr(1);
 		$("#content").load(url + " #content", function() {
-			$("li").removeClass( "active" );
+			$("li").removeClass("active");
 			document.title = urlCapitalized + " | Michael Marek";
-			if (url=='about') {
-				$("#tab1").parent().addClass( "active" );
-			} else if (url=='projects') {
-				$("#tab3").parent().addClass( "active" );		
-				$("#consilio, #rapitup").on("click", function(event) {
-					var id = $(this).attr('id');
-					$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
-					$('#imagemodal').modal('show');
-				});
-			} else if (url=='contact') {
-				$("#tab4").parent().addClass( "active" );
-				loadContact();	
+			
+			// specific code
+			switch(url) {
+				case 'about':
+					$("#tab1").parent().addClass("active");
+					break;
+				case 'projects':
+					$("#tab3").parent().addClass("active");		
+					$("#consilio, #rapitup").on("click", function(event) {
+						var id = $(this).attr('id');
+						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
+						$('#imagemodal').modal('show');
+					});
+					break;
+				case 'contact':
+					$("#tab4").parent().addClass("active");
+					loadContact();
+					break;
+				case 'courses':
+					$("#tab6").parent().addClass("active");
+				default:
+					break;
 			}
+			
 			if ($(window).scrollTop() !== 0 && scrolling == false) {	
 				scrollTop();
 			}

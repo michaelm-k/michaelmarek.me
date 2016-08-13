@@ -1,0 +1,13 @@
+extends ../layout
+
+block title
+	title Courses | Michael Marek
+	
+block content
+	include courses.html
+	
+block append scripts	
+	script.
+		// executed on page refresh
+		$("#tab6").closest("li").addClass("active");
+		window.history.pushState({url:'courses'}, "", "/courses");
