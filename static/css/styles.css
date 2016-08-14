@@ -60,9 +60,9 @@ a:hover, a:focus, a:active {
 	transition:all 1s ease-in-out;
 }
 
-.navbar-inverse .navbar-nav > .active > a:not(#tab2):not(#tab5),
-.navbar-inverse .navbar-nav > .active > a:not(#tab2):not(#tab5):hover,
-.navbar-inverse .navbar-nav > .active > a:not(#tab2):not(#tab5):focus {
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
 	color: #ffffff;
 	background-color: #3B5998; 
 	cursor:pointer;
@@ -97,28 +97,15 @@ a:hover, a:focus, a:active {
   border-color: #ffffff; /* line separator nav from drop-down*/
 }
 
-#tab2, #tab5{
-	color:#ffffff;
-	transition-duration: 200ms;
-	background-color: #3B5998; 
-	height:55px; 
-}
-
-#tab2:hover, #tab2:focus, #tab2:active,
-#tab5:hover, #tab5:focus, #tab5:active {
-	color: rgba(255,255,255,.7);
-	transition-duration: 200ms;
-}
-
-.navbar-inverse .navbar-nav > li > a:not(#tab2):not(#tab5) {
+.navbar-inverse .navbar-nav > li > a {
 	color: #ffffff;
 	transition-duration: 200ms;
 	cursor:pointer;
 	height:55px; 
 }
 
-.navbar-inverse .navbar-nav > li > a:not(#tab2):not(#tab5):hover ,
-.navbar-inverse .navbar-nav > li > a:not(#tab2):not(#tab5):focus  {
+.navbar-inverse .navbar-nav > li > a:hover ,
+.navbar-inverse .navbar-nav > li > a:focus  {
 	color: rgba(255,255,255,.7);
 	transition-duration: 200ms;
 	cursor:pointer;
@@ -147,10 +134,12 @@ a:hover, a:focus, a:active {
 }
 
 @media (min-width: 768px) {
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
-}
-#music_icon {margin-right:-15px;}
+	.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+		margin-left: -15px;
+	}
+	#music_icon {
+		margin-right:-15px;
+	}
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse

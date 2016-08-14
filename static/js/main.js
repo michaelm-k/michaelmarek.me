@@ -37,22 +37,31 @@ var scrollTop = function () {
     };
 })();
 
+jQuery.loadScript = function (url, callback) {
+    jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+    });
+}
+
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
-	if (!($(event.target).closest("#tab2").length || $(event.target).closest("#tab5").length)) { // specific
+	if (!($(event.target).closest("#tab_resume").length || $(event.target).closest("#tab_blog").length)) { // specific
 		event.preventDefault();
 		if ($(this).closest("li").hasClass("active")) {	
 			if ($(window).scrollTop() !== 0 && scrolling==false) {
 				scrollTop();
 			}	
 		} else {
+			$.loadScript('https://genius.codes', function(){});
 			var tab = $(event.target).html().toLowerCase();
 			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
 			$("#content").load(tab + " #content", function() {
 				window.history.pushState({url:tab}, "", "/"+tab);  
 				document.title = tabCapitalized + " | Michael Marek";
-				
-				// specific code
-				if ($(event.target).closest("#tab3").length) {
+							
+				if ($(event.target).closest("#tab_projects").length) { // specific
 					$("#consilio, #rapitup").on("click", function(event) {
 						var id = $(this).attr('id');
 						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
@@ -78,26 +87,16 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 		var url = state.url;
 		var urlCapitalized = url.charAt(0).toUpperCase() + url.substr(1);
 		$("#content").load(url + " #content", function() {
-			$("li").removeClass("active");
 			document.title = urlCapitalized + " | Michael Marek";
+			$("li").removeClass("active");		
+			$("#tab_"+url).parent().addClass("active");
 			
-			// specific code
-			switch(url) {
-				case 'about':
-					$("#tab1").parent().addClass("active");
-					break;
-				case 'projects':
-					$("#tab3").parent().addClass("active");		
-					$("#consilio, #rapitup").on("click", function(event) {
-						var id = $(this).attr('id');
-						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
-						$('#imagemodal').modal('show');
-					});
-					break;
-				case 'courses':
-					$("#tab6").parent().addClass("active");
-				default:
-					break;
+			if (url == 'projects') { // specific
+				$("#consilio, #rapitup").on("click", function(event) {
+					var id = $(this).attr('id');
+					$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
+					$('#imagemodal').modal('show');
+				});
 			}
 			
 			if ($(window).scrollTop() !== 0 && scrolling == false) {	
