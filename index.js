@@ -5,9 +5,6 @@ var app = express();
 var port = process.env.PORT || 5000;
 var server = http.createServer(app);
 
-var nodemailer = require("nodemailer");
-var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-
 app.use(bodyParser());
 
 app.set('views', __dirname + '/tpl');
@@ -49,57 +46,6 @@ app.get('/projects', function (req, res) {
 
 app.get('/courses', function (req, res) {
     res.render("tabs/courses");
-});
-
-app.get('/contact', function (req, res) {
-    res.render("tabs/contact");
-});
-
-app.post('/contact', function (req, res) {
-	if (inDevMode) {
-		var smtpConfig = {
-			host: 'smtp.gmail.com',
-			port: 465,
-			secure: true, // use SSL
-			auth: {
-				user: process.env.USERNAME,
-				pass: process.env.PASSWORD
-			}
-		};
-		var smtpTransport = nodemailer.createTransport(smtpConfig);
-		var payload = {
-			from	: req.body.name,
-			subject	: req.body.email,
-			to 		: 'michael.marem@gmail.com',
-			text 	: req.body.message
-		}
-		console.log(payload);
-		smtpTransport.sendMail(payload, function(error, info){
-			if (error) {
-				res.json({status: 500});
-				console.log(error);
-			} else {
-				res.json({status: 202});
-				console.log("Message sent: " + info.message);
-			}
-		});
-	} else {
-		var payload = {
-			to      : 'michael.marem@gmail.com',
-			from    : process.env.SENDER,
-			subject : req.body.name + ' <' + req.body.email + '>',
-			text    : req.body.message
-		}
-		sendgrid.send(payload, function(err, json) {
-			if (err) { 
-				res.json({status: 500});
-				console.error(err); 
-			} else {
-				res.json({status: 202});
-			}
-			console.log(json);
-		});
-	}
 });
 
 /* end TABS */

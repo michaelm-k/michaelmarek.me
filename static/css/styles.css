@@ -301,30 +301,6 @@ a.writer.active{
 	line-height:2.0;
 }
 
-/* START: CONTACT */
-
-.content-text.contact {
-	margin-bottom:40px;
-	float:left;
-}
-
-.content-text .fa-stack-overflow,.content-text .fa-github-square,.content-text .fa-linkedin-square {
-	margin:0 0 0 15px;
-}
-
-#dave {
-	float:right; 
-	width:490px; 
-	height:auto; 
-	margin-bottom:20px;
-	margin-left:30px;
-	vertical-align: middle;
-	display:block;
-	max-width:100%;
-}
-
-/* END: CONTACT */
-
 /* START: ABOUT */
 
 .about_img {
@@ -346,7 +322,7 @@ a.writer.active{
 		padding-right:15px;
 	}
 	
-	#dave, .about_img, .project-image-left, .project-image-right {
+	.about_img, .project-image-left, .project-image-right {
 		margin-left:0;
 		width:100%;
 	}

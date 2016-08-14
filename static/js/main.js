@@ -37,31 +37,6 @@ var scrollTop = function () {
     };
 })();
 
-function loadContact() {
-	//$("#dave").css("opacity", 0);
-	//$("#dave").stop(true).animate( {opacity: "1"}, 2000); 	
-	$(".content-text .fa-diamond, .content-text .fa-stack-overflow, .content-text .fa-linkedin-square, .content-text .fa-github-square").addClass("animated rubberBand");
-	$.getScript("static/js/form.js")
-		.done(function(data, textStatus, jqxhr) {
-			/* console.log(data); // Data returned
-			console.log(textStatus); // Success
-			console.log(jqxhr.status); // 200
-			console.log("Load was performed."); */
-		})
-		.fail(function() {
-			location.reload();
-		});
-	$.ajax({
-		url:"static/css/form.css",
-		success:function(data){
-			$("<style></style>").appendTo("head").html(data);
-		},
-		error:function() {
-			location.reload();
-		}
-	});
-}
-
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!($(event.target).closest("#tab2").length || $(event.target).closest("#tab5").length)) { // specific
 		event.preventDefault();
@@ -83,8 +58,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
 						$('#imagemodal').modal('show');
 					});
-				} else if ($(event.target).closest("#tab4").length) {
-					loadContact();
 				}
 				
 				if ($(window).scrollTop() !== 0 && scrolling == false) {	
@@ -120,10 +93,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
 						$('#imagemodal').modal('show');
 					});
-					break;
-				case 'contact':
-					$("#tab4").parent().addClass("active");
-					loadContact();
 					break;
 				case 'courses':
 					$("#tab6").parent().addClass("active");
