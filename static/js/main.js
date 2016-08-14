@@ -50,6 +50,8 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 			$("#content").load(tab + " #content", function() {
 				window.history.pushState({url:tab}, "", "/"+tab);  
 				document.title = tabCapitalized + " | Michael Marek";
+				$("li").removeClass("active");
+				$(this).closest("li").addClass("active"); 
 							
 				if ($(event.target).closest("#tab_projects").length) { // specific
 					$("#consilio, #rapitup").on("click", function(event) {
@@ -63,10 +65,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 					scrollTop();
 				}
 			});	
-			$("#content").css("padding-left",0);
-			$("#content").css("padding-right",0);
-			$("li").removeClass("active");
-			$(this).closest("li").addClass("active"); 
 		}	
 	}
 });
@@ -93,8 +91,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				scrollTop();
 			}
 		});
-		$("#content").css("padding-left",0);
-		$("#content").css("padding-right",0);
 	} else {
 		window.location.href="/";
 	}
