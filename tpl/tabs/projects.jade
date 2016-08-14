@@ -7,8 +7,7 @@ block content
 	include projects.html
 	
 block append scripts	
-	script(type="text/javascript", src="/static/js/modal.js")
+	script(type="text/javascript", src="/static/js/custom/modal.js")
 	script.
 		// executed on page refresh
 		$("#tab_projects").closest("li").addClass("active");
-		window.history.pushState({url:'projects'}, "", "/projects");

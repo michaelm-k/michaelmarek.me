@@ -17,7 +17,7 @@ html
 			link(href="/static/css/bootstrap.css", rel="stylesheet")
 			link(href="/static/css/font-awesome.css", rel="stylesheet")
 			
-			link(href="/static/css/styles.css", rel="stylesheet")
+			link(href="/static/css/custom/styles.css", rel="stylesheet")
 	body
 		.custom-wrapper
 			include navbar.html
@@ -29,13 +29,12 @@ html
 		block scripts
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
 			script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js")
-			
+
 			script(type="text/javascript", src="/static/js/bootstrap.js")
 			
 			script(async src="https://genius.codes")
 			
-			script(type="text/javascript", src="/static/js/main.js")
-			script(type="text/javascript", src="/static/js/other.js")
+			script(type="text/javascript", src="/static/js/custom/main.js")
 
 		script.
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
