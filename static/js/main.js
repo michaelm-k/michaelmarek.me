@@ -40,32 +40,9 @@ var scrollTop = function () {
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!($(event.target).closest("#tab_resume").length || $(event.target).closest("#tab_blog").length)) { // specific
 		event.preventDefault();
-		if ($(this).closest("li").hasClass("active")) {	
-			if ($(window).scrollTop() !== 0 && scrolling==false) {
-				scrollTop();
-			}	
-		} else {
-			var tab = $(event.target).html().toLowerCase();
-			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
-			$("#content").load(tab + " #content", function() {
-				window.history.pushState({url:tab}, "", "/"+tab);  
-				document.title = tabCapitalized + " | Michael Marek";
-				$("li").removeClass("active");
-				$(this).closest("li").addClass("active"); 
-							
-				if ($(event.target).closest("#tab_projects").length) { // specific
-					$("#consilio, #rapitup").on("click", function(event) {
-						var id = $(this).attr('id');
-						$('#imagepreview').attr('src', $('#' + id + ' img').attr('src'));
-						$('#imagemodal').modal('show');
-					});
-				}
-				
-				if ($(window).scrollTop() !== 0 && scrolling == false) {	
-					scrollTop();
-				}
-			});	
-		}	
+		var tab = $(event.target).html().toLowerCase();
+		window.history.pushState({url:tab}, "", "/"+tab); 
+		window.location.href="/"+tab;
 	}
 });
 
