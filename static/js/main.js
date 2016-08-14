@@ -45,12 +45,6 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				scrollTop();
 			}	
 		} else {
-			$.getScript("https://genius.codes", function(data, textStatus, jqxhr) {
-console.log(data); //data returned
-console.log(textStatus); //success
-console.log(jqxhr.status); //200
-console.log('Load was performed.');
-});
 			var tab = $(event.target).html().toLowerCase();
 			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
 			$("#content").load(tab + " #content", function() {
@@ -71,8 +65,8 @@ console.log('Load was performed.');
 			});	
 			$("#content").css("padding-left",0);
 			$("#content").css("padding-right",0);
-			$("li").removeClass( "active" );
-			$(this).closest("li").addClass( "active" ); 
+			$("li").removeClass("active");
+			$(this).closest("li").addClass("active"); 
 		}	
 	}
 });
