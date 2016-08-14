@@ -26,15 +26,15 @@ app.get('/', function (req, res) {
 });
 
 app.get('/please_upgrade', function (req, res) {
-    res.render("please_upgrade");
+    res.render("other/please_upgrade");
 });
 
 app.get('/annotation', function (req, res) {
-    res.render("annotation");
+    res.render("other/annotation");
 });
 
 app.get('/player', function (req, res) {
-    res.render("player");
+    res.render("other/player");
 });
 
 /* TABS */
