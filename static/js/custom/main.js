@@ -9,7 +9,7 @@ $(".navbar-toggle").click(function() {
 	}	
 });
 
-$( ".navbar-toggle" )
+$(".navbar-toggle")
 	.mouseover(function() {  
 		$(this).addClass("menuHover");
 	})
