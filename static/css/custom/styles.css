@@ -55,6 +55,7 @@ a:hover, a:focus, a:active {
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
+	font-weight: bold;
 	color: #ffffff;
 	background-color: #3B5998; 
 	cursor:pointer;
