@@ -37,15 +37,6 @@ var scrollTop = function () {
     };
 })();
 
-jQuery.loadScript = function (url, callback) {
-    jQuery.ajax({
-        url: url,
-        dataType: 'script',
-        success: callback,
-        async: true
-    });
-}
-
 $(".navbar-inverse .navbar-nav > li > a").click(function(event) { 
 	if (!($(event.target).closest("#tab_resume").length || $(event.target).closest("#tab_blog").length)) { // specific
 		event.preventDefault();
@@ -54,7 +45,12 @@ $(".navbar-inverse .navbar-nav > li > a").click(function(event) {
 				scrollTop();
 			}	
 		} else {
-			$.loadScript('https://genius.codes', function(){});
+			$.getScript("https://genius.codes", function(data, textStatus, jqxhr) {
+console.log(data); //data returned
+console.log(textStatus); //success
+console.log(jqxhr.status); //200
+console.log('Load was performed.');
+});
 			var tab = $(event.target).html().toLowerCase();
 			var tabCapitalized = tab.charAt(0).toUpperCase() + tab.substr(1);	
 			$("#content").load(tab + " #content", function() {
