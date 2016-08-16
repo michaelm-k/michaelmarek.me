@@ -16,6 +16,7 @@ a {
 
 a:hover, a:focus, a:active {
 	color:#f2777a;
+	text-decoration: none;
 }
 
 .custom-wrapper {
