@@ -6,8 +6,11 @@ block title
 block content
 	include projects.html
 	
-block append scripts	
-	script(type="text/javascript", src="/static/js/custom/modal.js")
+block append scripts
 	script.
 		// executed on page refresh
+		$(".zoomable").on("click", function(event) {
+			$('#imagepreview').attr('src', $(this).attr('src'));
+			$('#imagemodal').modal('show');
+		});
 		$("#tab_projects").closest("li").addClass("active");
