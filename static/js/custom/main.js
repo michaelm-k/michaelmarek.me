@@ -16,7 +16,6 @@ $(".navbar-toggle")
 	.mouseout(function() {
 		$(this).removeClass("menuHover");	   
 	});
-
 /* END: NAVBAR TOGGLE BTN */
 
 function popup(){

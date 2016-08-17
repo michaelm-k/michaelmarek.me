@@ -181,19 +181,26 @@ a:hover, a:focus, a:active {
 /* END: FOOTER */
 
 /* START: HOME */
-#name {
+#name img {
 	opacity:0;
-	margin-bottom: -1.5%;
 }
 
 @media (min-width:768px) {
-	#name {
+	
+	#name, #name img {
+		margin: auto;
 		width:600px;
 		height:330px;
 	}
 }
 
-a.writer {
+.writer {
+	margin-top:-15px;
+	height: 50px;
+	text-align:center;
+}
+
+.writer a {
 	font-family: 'Permanent Marker', cursive;
 	text-decoration:none;
 	display:none;
@@ -203,7 +210,16 @@ a.writer {
 	font-size: 150%;
 }
 
-a.writer.active{
+@media screen and (max-width:500px) {
+	.writer {
+		margin-top: 0px;
+	}
+	.writer a {
+		font-size: 100%;
+	}
+}
+
+.writer a:hover{
 	 color:rgba(69, 95, 200, 1);	 
 }
 /* END: HOME */
@@ -274,7 +290,7 @@ a.writer.active{
 	}
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 	#imagemodal .modal-dialog {
 		width: 97%;
 	}
