@@ -55,20 +55,7 @@ a:hover, a:focus, a:active {
   background-color: rgba(69, 95, 200, 1);
   border-color: rgba(69, 95, 200, 1);
   border-radius: 0 !important;
-  opacity: 0.95;	
-  font-size:16px;
-}
-
-.navbar-inverse .navbar-nav > li > a,
-.navbar-inverse .navbar-brand {	
-	color: rgba(255,255,255,.85);
-	transition-duration: 200ms;
-}
-
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:active {
-	color: #ffffff;
-	transition-duration: 200ms;
+  opacity: 0.95;
 }
 
 .navbar-inverse .navbar-nav > .active > a,
@@ -78,12 +65,24 @@ a:hover, a:focus, a:active {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-	height:55px; 
+	font-size:16px;
 }
 
 .navbar-inverse .navbar-brand {
-	height:55px;
 	font-size:21px;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-brand {
+	height:55px;
+	color: rgba(255,255,255,.85);
+	transition-duration: 200ms;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:active {
+	color: #ffffff;
+	transition-duration: 200ms;
 }
 
 .navbar-inverse .navbar-toggle {
