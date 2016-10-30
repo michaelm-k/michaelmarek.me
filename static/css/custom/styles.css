@@ -237,6 +237,14 @@ a:hover, a:focus, a:active {
 
 /* START: PROJECTS */
 
+hr.left {
+	clear:left;
+}
+
+hr.right {
+	clear:right;
+}
+
 .project-heading{
 	color:#000000;
 }
@@ -245,17 +253,23 @@ a:hover, a:focus, a:active {
 	padding:4px;
 }
 
-.project-image-right {
+.project-link {
+	padding-right:5px;
+	font-weight:bold;
+}
+
+.project-image {
 	width:500px;
-	height:auto;	
+	height:auto;
+}
+
+.project-image.right {
 	float:right;
 	clear:right;
 	margin:0 0 30px 30px;
 }
 
-.project-image-left {
-	width:500px;
-	height:auto;
+.project-image.left {
 	float:left;
 	clear:left;
 	margin:0 30px 30px 0;
@@ -298,12 +312,6 @@ a:hover, a:focus, a:active {
 
 /* END: PROJECTS */
 
-.content-text{
-	font-size:16px;
-	font-weight:500px;
-	line-height:2.0;
-}
-
 /* START: ABOUT */
 
 #img_about{
@@ -312,19 +320,21 @@ a:hover, a:focus, a:active {
 	margin-bottom:20px;
 	width:500px;
 	height:auto;
-	
-}
-
-.hitek {
 	transition-duration: 150ms;
 }
 
-.hitek:hover {
+#img_about:hover {
 	opacity:0.85;
 	transition-duration: 150ms;
 }
 
 /* END: ABOUT */
+
+.content-text{
+	font-size:16px;
+	font-weight:500px;
+	line-height:2.0;
+}
 
 @media screen and (max-width:768px){	
 	#content {
@@ -333,7 +343,7 @@ a:hover, a:focus, a:active {
 	}
 	
 	#img_about, .project-image-left, .project-image-right {
-		margin-left:0;
-		width:100%;
+		margin-left: 0;
+		width: 100%;
 	}
 }

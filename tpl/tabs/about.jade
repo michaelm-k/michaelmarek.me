@@ -4,8 +4,16 @@ block title
 	title About | MM
 
 block content
-	include about.html
-	
+	div#content
+		h2 About Me
+		hr
+		div
+			a(href="http://genius.com/Kendrick-lamar-the-art-of-peer-pressure-lyrics" target="_blank")
+				img#img_about.img-responsive(src="/static/img/neon_fever.png" border="0")
+			div.content-text
+				p Hey, chief. I’m Michael, a rap-obsessed #[a(href="https://www.youtube.com/watch?v=wh0VMdYmeKE&feature=youtu.be&t=37m21s" target="_blank") professional dreamer], who also happens to be a software engineering student at the University of Waterloo.
+				p When I'm not refining my back hip circle, chances are I'm either watching #[i Saturday Night Fever] for like the um#[sup teenth] time or #[a(href="http://blog.michaelmarek.me/" target="_blank") giving the youth something to look forward to].
+				
 block append scripts	
 	script.
 		$("#tab_about").closest("li").addClass("active");

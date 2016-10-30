@@ -2,10 +2,98 @@ extends ../layout
 
 block title
 	title Projects | MM
-	
+
 block content
-	include projects.html
-	
+	div#content
+		div#imagemodal.modal.fade(tabindex="-1")
+			div.modal-dialog
+				div.modal-content
+					div.modal-body
+						img#imagepreview(src="" style="width:100%; height:auto;")
+					div.modal-footer
+						button.btn.btn-default(type="button" data-dismiss="modal") Close
+
+		h2 Projects
+		hr
+
+		div.project-badge
+			img.project-image.right.img-responsive.zoomable(src="/static/img/consilio.png" style="border-radius:5px;")
+			div.content-text
+				h3.project-heading 
+					a.project-link(href="https://consilio.herokuapp.com" target="_blank") consil.io
+					a(href="https://consilio.herokuapp.com" target="_blank") #[i.fa.fa-server]
+					a(href="https://github.com/michaelm-k/consilio" target="_blank") #[i.fa.fa-github]
+				h4 Express.js / socket.IO / SoundCloud API					
+				p.project-caption Real-time messaging. Real music.
+
+				p consil.io is a five-star chat hotel where guests are given free rein to create and join rooms &mdash; public or private &mdash; in which they can then stream music from SoundCloud's vast catalogue.
+				p The best part is that you and your friends can fight over what song to listen to. Synchronized streaming, baby! (hi-tek, huh)
+			hr.right
+
+		div.project-badge
+			img.project-image.left.img-responsive.zoomable(src="/static/img/rapitup.png")
+			div.content-text
+				h3.project-heading 
+					a.project-link(href="https://rapitup.herokuapp.com" target="_blank") rapitup
+					a(href="https://rapitup.herokuapp.com" target="_blank") #[i.fa.fa-server]
+				h4 Ruby on Rails / #[a(href="https://github.com/collectiveidea/delayed_job" target="_blank") Delayed::Job]				
+				p.project-caption The freshest battle-rap platform the Internet's ever seen.
+
+				p You can never predict when or where a rap battle will take place when you're on the web. It could be over Facebook. It could be over Piazza. (professors have bars too btw) Point being, you never know.
+				p Which is why you should hone your craft by writing sweet 16s on rapitup (just make sure to sign up first). So that when it finally comes time for you to #[a(href="http://genius.com/4812106" target="_blank") compromise someone&#39;s condom size] (so to speak), you'll know where to begin.
+			hr.left
+
+		div.project-badge
+			img.project-image.right.img-responsive(src="/static/img/blog.png" style="border-radius:25px;")
+			div.content-text
+				h3.project-heading 
+					a.project-link(href="http://blog.michaelmarek.me/" target="_blank") michael x dave
+					a(href="http://blog.michaelmarek.me/" target="_blank") #[i.fa.fa-server]
+				h4 Django / a lil inspiration from #[a(href="https://wordpress.com/themes/eighties/" target="_blank") Eighties], #[a(href="https://svbtle.com/" target="_blank") Svbtle], #[a(href="https://medium.com/" target="_blank") Medium]
+				p.project-caption A place to pick up the pieces to my broken thoughts.
+
+				p Since 1A, it's become something of a tradition to write a fairly lengthy piece each time I finish an academic term. The good, the bad, I like to talk about it all. So, if you've got a sweet tooth for sugarcoated retrospectives, I'm afraid that you'll find mine rather disappointing.
+				p Just know, not everything I say is true. But the rest is. :P
+			hr.right
+
+			div.project-badge
+				img.project-image.left.img-responsive(src="/static/img/website.png")
+				div.content-text
+					h3.project-heading
+						a.project-link(href="http://michaelm-k.github.io/" target="_blank") this, V?
+						a(href="https://github.com/michaelm-k/michaelmarek.me" target="_blank") #[i.fa.fa-github]
+					h4 Express.js / Jade / AJAX / Bootstrap
+					p.project-caption My intro to web dev.
+
+					p Life is all about making the right choices. I've made some poor choices in my life. Poor #[i design] choices that is. I'm a good boy, after all.
+				hr.left
+
+		div.project-badge
+			img.project-image.right.img-responsive(src="/static/img/drinking_game.png")
+			div.content-text
+				h3.project-heading 
+					a.project-link(href="http://michaelm-k.github.io/Drink-Cup" target="_blank") drink / cup
+					a(href="http://michaelm-k.github.io/Drink-Cup" target="_blank") #[i.fa.fa-server]
+					a(href="https://github.com/michaelm-k/Drink-Cup" target="_blank") #[i.fa.fa-github]
+				h4 HTML / CSS / jQuery
+				p.project-caption Exercising minimalism to the max.
+
+				p What's so special about a glass being filled with water you ask? Now that I think about it... I don't know.
+				p But by all means, drink up!
+			hr.right
+
+		div.project-badge
+			a(href="/static/Beneath_the_Sleeve.pdf" target="_blank") 
+				img#img_story.img-responsive(src="/static/img/story.png")
+			div.content-text
+				h3.project-heading
+					a.project-link(href="/static/Beneath_the_Sleeve.pdf" target="_blank") published short story
+					a(href="/static/Beneath_the_Sleeve.pdf" target="_blank") #[i.fa.fa-server]
+				h4 English / Active Voice
+
+				p Not coding-related, per se, but worth including nevertheless!
+				p I submitted this story back in Grade 12 for the #[a(href="http://www.polarexpressions.ca/index.html" target="_blank") Polar Expressions Publishing] #[strong 2013/2014 National Student Poetry and Short-Story Contest], and they were kind enough to publish it! So, shout out to them.											
+
 block append scripts
 	script.
 		$(".zoomable").on("click", function(event) {
