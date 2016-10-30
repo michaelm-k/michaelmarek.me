@@ -4,9 +4,26 @@ block title
 	title Courses | MM
 	
 block content
-	include courses.html
-	
+	div#content
+		h2 Courses
+		hr
+		table#table_courses.table.table-hover
+			thead
+				tr
+					th Term
+					th Course and Title
+			tbody
+				each term in terms
+					each course, index in term.courses
+						tr
+							if index == 0
+								th
+									p #{term.term}
+							else
+								th.no_top
+							td 
+								a(href=term.links[index]) #{course}
+
 block append scripts	
 	script.
-		// executed on page refresh
 		$("#tab_courses").closest("li").addClass("active");

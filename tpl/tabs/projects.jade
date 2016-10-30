@@ -8,7 +8,6 @@ block content
 	
 block append scripts
 	script.
-		// executed on page refresh
 		$(".zoomable").on("click", function(event) {
 			$('#imagepreview').attr('src', $(this).attr('src'));
 			$('#imagemodal').modal('show');
