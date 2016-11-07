@@ -166,6 +166,7 @@ a:hover, a:focus, a:active {
   
 /* START: FOOTER */
 #footer {
+	clear:both;
    text-align:center;
    padding: 40px 0 50px;
 }
@@ -185,8 +186,7 @@ a:hover, a:focus, a:active {
 	opacity:0;
 }
 
-@media (min-width:768px) {
-	
+@media (min-width:768px) {	
 	#name, #name img {
 		margin: auto;
 		width:600px;
@@ -223,6 +223,10 @@ a:hover, a:focus, a:active {
 	 color:rgba(69, 95, 200, 1);	 
 }
 /* END: HOME */
+
+#content h2 {
+	margin-bottom: 20px;
+}
 
 /* START: COURSES */
 
