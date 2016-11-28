@@ -95,8 +95,11 @@ block content
 
 block append scripts
 	script.
-		$(".zoomable").on("click", function(event) {
-			$('#imagepreview').attr('src', $(this).attr('src'));
-			$('#imagemodal').modal('show');
+		$(function() {
+			$(".zoomable").on("click", function() {
+				$('#imagepreview').attr('src', $(this).attr('src'));
+				$('#imagemodal').modal('show');
+			});
+			document.getElementById('tab_projects').closest('li').className += 'active';
 		});
-		$("#tab_projects").closest("li").addClass("active");
+		

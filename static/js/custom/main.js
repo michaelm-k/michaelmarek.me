@@ -1,23 +1,25 @@
-/* START: NAVBAR TOGGLE BTN */
-$(".navbar-toggle").click(function() {
-    if ($(".navbar-toggle").hasClass("collapsed")) {
-		$(this).addClass("menuActive");
-		$(".navbar-inverse").css("opacity", "1"); 
+var $navbarToggle = $('.navbar-toggle');
+var $navbar = $('.navbar');
+var $navbarCollapse = $('.navbar-collapse');
+
+$navbarToggle.click(function() {
+    if ($navbarCollapse.hasClass('in')) {
+		$(this).removeClass('menuActive');	
+		$navbar.css('opacity', '0.95'); 		
 	} else {	
-		$(this).removeClass("menuActive");	
-		$(".navbar-inverse").css("opacity", "0.95"); 
+		$(this).addClass('menuActive');
+		$navbar.css('opacity', '1'); 
 	}	
 });
 
-$(".navbar-toggle")
+$navbarToggle
 	.mouseover(function() {  
-		$(this).addClass("menuHover");
+		$(this).addClass('menuHover');
 	})
 	.mouseout(function() {
-		$(this).removeClass("menuHover");	   
+		$(this).removeClass('menuHover');	   
 	});
-/* END: NAVBAR TOGGLE BTN */
 
-function popup(){
-	playerWindow = window.open("player", "player", "location=no,width=365,height=487");
-}
+$('#icon_music').click(function() {
+	window.open('player', 'player', 'location=no,width=365,height=487');
+});

@@ -12,21 +12,25 @@ block content
 
 block append scripts
 	script.
-		$("#name img").animate({opacity:1}, 1000);
+		$(function() {
+			var $img = $("#name img");
+			var $quote = $(".writer a");
 
-		setTimeout(function(){
-			$(".writer a").css("display", "block");
-			$(".writer a").animate({opacity:1}, 2000); 
-		}, 15000);
+			$img.animate({opacity:1}, 1000);
 
-		// http://support.cargocollective.com/customer/portal/questions/1349490-animated-gif-for-header-img-force-gif-to-restart-on-refresh
-		$(function(){	
-			$("#name img").hide().attr("src", $("#name img").attr("src") + "?_=" + Date.now());	// replace src with timestamped url to avoid cache					
-			$("#name img").one("load", function() { // hide the image until the new one has loaded. Otherwise it'll look choppy when the new one loads.
+			setTimeout(function(){
+				$quote.css("display", "block");
+				$quote.animate({opacity:1}, 2000); 
+			}, 15000);
+
+			// http://support.cargocollective.com/customer/portal/questions/1349490-animated-gif-for-header-img-force-gif-to-restart-on-refresh
+			$img.hide().attr("src", $("#name img").attr("src") + "?_=" + Date.now());	// replace src with timestamped url to avoid cache					
+			$img.one("load", function() { // hide the image until the new one has loaded. Otherwise it'll look choppy when the new one loads.
 				$(this).show();
 			}).each(function() {		
 				if (this.complete) { // also fire the function if the image is loaded before the event is bound.
 					$(this).load();
 				}
-			});	
-		});	
+			});
+		});
+		

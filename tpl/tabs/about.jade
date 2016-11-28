@@ -16,4 +16,7 @@ block content
 				
 block append scripts	
 	script.
-		$("#tab_about").closest("li").addClass("active");
+		$(function() {
+			document.getElementById('tab_about').closest('li').className += 'active';
+		});
+		

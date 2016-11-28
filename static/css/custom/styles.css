@@ -119,6 +119,10 @@ a:hover, a:focus, a:active {
 	float:right;
 }
 
+#icon_music:hover {
+	cursor: pointer;
+}
+
 @media screen and (max-width:767px){
 	#icon_music {
 		float:left;
@@ -178,6 +182,10 @@ a:hover, a:focus, a:active {
 #footer .fa:hover, #footer .fa:focus, #footer .fa:active  {
      color: rgba(69, 95, 200, 1);
 	 transition-duration: 200ms;
+}
+#footer #copyright {
+	padding-top: 10px;
+	color: #777
 }
 /* END: FOOTER */
 
