@@ -28,31 +28,31 @@ if (environment === 'development') {
 }
 
 app.get('/', function (req, res) {
-    res.render("index");
+  res.header('Vary', 'Accept-Encoding').render("index");
 });
 
 app.get('/please_upgrade', function (req, res) {
-    res.render("other/please_upgrade");
+  res.header('Vary', 'Accept-Encoding').render("other/please_upgrade");
 });
 
 app.get('/annotation', function (req, res) {
-    res.render("other/annotation");
+  res.render("other/annotation");
 });
 
 app.get('/player', function (req, res) {
-    res.render("other/player");
+  res.render("other/player");
 });
 
 app.get('/about', function (req, res) {
-    res.render("tabs/about");
+  res.header('Vary', 'Accept-Encoding').render("tabs/about");
 });
 
 app.get('/projects', function (req, res) {
-    res.render("tabs/projects");
+  res.header('Vary', 'Accept-Encoding').render("tabs/projects");
 });
 
 app.get('/courses', function (req, res) {
-	res.render("tabs/courses");	
+	res.header('Vary', 'Accept-Encoding').render("tabs/courses");	
 });
 
 var run_server = server.listen(port, function () {
