@@ -1,7 +1,5 @@
 /* This is a manifest file. */
 
-//= require javascripts/jquery-3.1.1.min
-//= require javascripts/bootstrap.min
 //= require javascripts/zoom
 //= require_self
 
