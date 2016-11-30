@@ -9,7 +9,7 @@ var server = http.createServer(app);
 var mincerEnvironment = new Mincer.Environment();
 var environment = process.env.NODE_ENV || 'development';
 
-app.set('views', __dirname + '/tpl');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.engine('jade', require('jade').__express);
 
