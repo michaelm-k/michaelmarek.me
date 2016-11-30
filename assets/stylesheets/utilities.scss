@@ -1,0 +1,30 @@
+$blue: rgba(69,95,200,1); 
+$light: rgba(255,255,255,.85);
+$pink: #f2777a;
+
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin transition-duration($duration) {
+	-webkit-transition-duration: $duration;
+    -moz-transition-duration: $duration;
+    -o-transition-duration: $duration;
+    transition-duration: $duration;
+}
+
+@mixin opacity($value) {
+	opacity: $value;
+	-moz-opacity: $value;
+	filter: alpha(opacity=$value*100);
+}
+
+@mixin box-shadow($args...) {
+	-webkit-box-shadow: $args;
+	-moz-box-shadow: $args;
+	box-shadow: $args;
+}

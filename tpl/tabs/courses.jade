@@ -17,7 +17,7 @@ block content
 block append scripts	
 	script.
 		$(function() {
-			document.getElementById('tab_courses').closest('li').className += 'active';
+			document.getElementById('tab_courses').parentElement.className += 'active';
 
 			var terms = [{"term": "1A Fall 2014",
 			  "courses":[

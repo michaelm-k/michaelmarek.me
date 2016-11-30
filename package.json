@@ -9,8 +9,12 @@
   "author": "Michael Marek",
   "license": "ISC",
   "dependencies": {
+    "csso": "^2.3.0",
     "express": "^4.13.3",
-    "jade": "1.11.0"
+    "jade": "1.11.0",
+    "mincer": "^1.5.0",
+    "node-sass": "^3.13.0",
+    "uglify-js": "^2.7.4"
   },
   "engines": {
     "node": "0.10.35"

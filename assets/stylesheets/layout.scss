@@ -1,0 +1,22 @@
+html,
+body {
+   height: 100%;
+   font-family: 'Nunito', sans-serif;
+   position: relative;
+}
+
+.custom-wrapper {
+   min-height: 100%;
+   position: relative;
+}
+
+.pad-container {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.container {
+	@media (min-width: 768px) {
+		width: 85%;
+	}
+}

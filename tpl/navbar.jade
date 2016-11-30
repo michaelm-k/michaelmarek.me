@@ -1,0 +1,23 @@
+div.navbar.navbar-inverse
+	div.container
+		a#icon_logo.navbar-brand(href="/") #[i.fa.fa-medium.fa-lg]
+		a#icon_music.navbar-brand #[i.fa.fa-music.fa-lg]
+					
+		div.navbar-header
+			button.navbar-toggle(data-toggle="collapse" data-target=".navHeaderCollapse")
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+					
+		div.collapse.navbar-collapse.navHeaderCollapse
+			ul.nav.navbar-nav.navbar-right
+				li
+					a#tab_about(href="/about") ABOUT
+				li
+					a#tab_resume(href="/assets/Resume.pdf" target="_blank") RESUME
+				li
+					a#tab_projects(href="/projects") PROJECTS
+				li
+					a#tab_courses(href="/courses") COURSES
+				li
+					a#tab_blog(href="http://blog.michaelmarek.me/") BLOG

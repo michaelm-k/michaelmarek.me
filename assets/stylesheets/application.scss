@@ -1,0 +1,180 @@
+/* This is a manifest file. */
+
+/*
+ *= require stylesheets/bootstrap.min
+ *= require stylesheets/font-awesome.min
+ *= require stylesheets/zoom
+ *= require stylesheets/fonts
+ *= require_self
+ */
+
+@import "utilities";
+@import "layout";
+@import "navigation";
+
+a {
+	color: black;
+	text-decoration: none;
+	@include transition(color 200ms ease);
+
+	&:hover, &:focus, &:active {
+		color: $pink;
+		text-decoration: none;
+	}
+}
+
+hr {
+	&.left {
+		clear: left;
+	}
+
+	&.right {
+		clear: right;
+	}
+}
+
+.zoomable {
+	cursor: zoom-in;
+}
+
+#name {
+	img {
+		@include opacity(0);
+	}
+
+	@media (min-width:768px) {
+		&, img {
+			margin: auto;
+			width:600px;
+			height:330px;
+		}
+	}
+}
+
+.writer {
+	margin-top: -15px;
+	height: 50px;
+	text-align: center;
+
+	a {
+		font-family: 'Permanent Marker', cursive;
+		text-decoration: none;
+		display: none;
+		@include opacity(0);
+		color: #000000;
+		cursor: pointer;
+		font-size: 150%;
+
+		&:hover {
+			color: $blue;
+		}
+	}
+
+	@media screen and (max-width:500px) {
+		margin-top: 0px;
+
+		a {
+			font-size: 100%;
+		}
+	}
+}
+
+#content {
+	h2 {
+		margin-bottom: 20px;
+	}
+
+	.content-text {
+		font-size: 16px;
+		font-weight: 500px;
+		line-height: 2.0;
+	}
+
+	@media screen and (max-width:768px){	
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+#table_courses {
+	th.no_top {
+		border-top: none;
+	}
+	
+	tr:hover th {
+		background-color: #ffffff;
+	}
+}
+
+.project-heading {
+	color: #000000;
+
+	.fa {
+		padding: 4px;
+	}
+}
+
+.project-link {
+	padding-right: 5px;
+	font-weight: bold;
+}
+
+.project-image {
+	width: 500px;
+	height: auto;
+
+	&.right {
+		float: right;
+		clear: right;
+		margin: 0 0 30px 30px;
+	}
+
+	&.left {
+		float: left;
+		clear: left;
+		margin: 0 30px 30px 0;
+	}
+
+	@media screen and (max-width: 800px) {
+		margin-left: 0;
+		width: 100%;	
+	}
+}
+
+.project-caption {
+	font-style: italic;
+}
+
+#img_story {
+	height: 300px;
+	width: 250px;
+	cursor: zoom-in;
+	@include opacity(0.5);
+	@include transition-duration(200ms);
+	float: left;
+	margin: 0 30px 30px 0;
+
+	&:hover, &:focus, &:active {
+		@include opacity(1);
+		@include transition-duration(200ms);
+	}
+}
+
+#img_about {
+	float: right;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	width: 500px;
+	height: auto;
+	@include transition-duration(150ms);
+
+	&:hover {
+		@include opacity(0.85);
+		@include transition-duration(150ms);
+	}
+
+	@media screen and (max-width: 768px) {
+		margin-left: 0;
+		width: 100%;
+	}
+}

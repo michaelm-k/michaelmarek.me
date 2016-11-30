@@ -1,18 +1,30 @@
 var express = require('express');
+var Mincer  = require('mincer');
+var csso = require('csso');
+var uglify = require('uglify-js');
 var http = require('http');
 var app = express();
 var port = process.env.PORT || 5000;
 var server = http.createServer(app);
+var mincerEnvironment = new Mincer.Environment();
+var environment = process.env.NODE_ENV || 'development';
 
 app.set('views', __dirname + '/tpl');
-app.set('view engine', "jade");
+app.set('view engine', 'jade');
 app.engine('jade', require('jade').__express);
-app.use("/static", express.static(__dirname + '/static'));
 
-var inDevMode = false;
-if (!process.env.NODE_ENV) {
+mincerEnvironment.appendPath('assets');
+mincerEnvironment.appendPath('vendor');
+mincerEnvironment.jsCompressor = function(context, data) {
+  return uglify.minify(data, {fromString: true}).code;
+};
+mincerEnvironment.cssCompressor = function(context, data) {
+  return csso.minify(data).css;
+};
+app.use('/assets', Mincer.createServer(mincerEnvironment));
+
+if (environment === 'development') {
 	require('./env.js');
-	inDevMode = true;
 }
 
 app.get('/', function (req, res) {
@@ -31,8 +43,6 @@ app.get('/player', function (req, res) {
     res.render("other/player");
 });
 
-/* TABS */
-
 app.get('/about', function (req, res) {
     res.render("tabs/about");
 });
@@ -44,8 +54,6 @@ app.get('/projects', function (req, res) {
 app.get('/courses', function (req, res) {
 	res.render("tabs/courses");	
 });
-
-/* end TABS */
 
 var run_server = server.listen(port, function () {
   var host = run_server.address().address;

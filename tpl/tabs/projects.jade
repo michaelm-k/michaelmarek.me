@@ -5,18 +5,10 @@ block title
 
 block content
 	div#content
-		div#imagemodal.modal.fade(tabindex="-1")
-			div.modal-dialog
-				div.modal-content
-					div.modal-body
-						img#imagepreview(src="" style="width:100%; height:auto;")
-					div.modal-footer
-						button.btn.btn-default(type="button" data-dismiss="modal") Close
-
 		h2 Projects
 
 		div.project-badge
-			img.project-image.right.img-responsive.zoomable(src="/static/img/consilio.png" style="border-radius:5px;")
+			img.project-image.right.img-responsive.zoomable(src="/assets/images/consilio.png" data-action="zoom")
 			div.content-text
 				h3.project-heading 
 					a.project-link(href="https://consilio.herokuapp.com" target="_blank") consil.io
@@ -30,7 +22,7 @@ block content
 			hr.right
 
 		div.project-badge
-			img.project-image.left.img-responsive.zoomable(src="/static/img/rapitup.png")
+			img.project-image.left.img-responsive.zoomable(src="/assets/images/rapitup.png" data-action="zoom")
 			div.content-text
 				h3.project-heading 
 					a.project-link(href="https://rapitup.herokuapp.com" target="_blank") rapitup
@@ -43,7 +35,7 @@ block content
 			hr.left
 
 		div.project-badge
-			img.project-image.right.img-responsive(src="/static/img/blog.png" style="border-radius:25px;")
+			img.project-image.right.img-responsive(src="/assets/images/blog.png")
 			div.content-text
 				h3.project-heading 
 					a.project-link(href="http://blog.michaelmarek.me/" target="_blank") michael x dave
@@ -56,7 +48,7 @@ block content
 			hr.right
 
 			div.project-badge
-				img.project-image.left.img-responsive(src="/static/img/website.png")
+				img.project-image.left.img-responsive(src="/assets/images/website.png")
 				div.content-text
 					h3.project-heading
 						a.project-link(href="http://michaelm-k.github.io/" target="_blank") this, V?
@@ -68,7 +60,7 @@ block content
 				hr.left
 
 		div.project-badge
-			img.project-image.right.img-responsive(src="/static/img/drinking_game.png")
+			img.project-image.right.img-responsive(src="/assets/images/drinking_game.png")
 			div.content-text
 				h3.project-heading 
 					a.project-link(href="http://michaelm-k.github.io/Drink-Cup" target="_blank") drink / cup
@@ -82,12 +74,12 @@ block content
 			hr.right
 
 		div.project-badge
-			a(href="/static/Beneath_the_Sleeve.pdf" target="_blank") 
-				img#img_story.img-responsive(src="/static/img/story.png")
+			a(href="/assets/Beneath_the_Sleeve.pdf" target="_blank") 
+				img#img_story.img-responsive(src="/assets/images/story.png")
 			div.content-text
 				h3.project-heading
-					a.project-link(href="/static/Beneath_the_Sleeve.pdf" target="_blank") published short story
-					a(href="/static/Beneath_the_Sleeve.pdf" target="_blank") #[i.fa.fa-server]
+					a.project-link(href="/assets/Beneath_the_Sleeve.pdf" target="_blank") published short story
+					a(href="/assets/Beneath_the_Sleeve.pdf" target="_blank") #[i.fa.fa-server]
 				h4 English / Active Voice
 
 				p Not coding-related, per se, but worth including nevertheless!
@@ -96,10 +88,6 @@ block content
 block append scripts
 	script.
 		$(function() {
-			$(".zoomable").on("click", function() {
-				$('#imagepreview').attr('src', $(this).attr('src'));
-				$('#imagemodal').modal('show');
-			});
-			document.getElementById('tab_projects').closest('li').className += 'active';
+			document.getElementById('tab_projects').parentElement.className += 'active';
 		});
 		
