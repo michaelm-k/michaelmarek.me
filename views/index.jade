@@ -7,14 +7,14 @@ block content
 	div#content
 		div#name
 			img.img-responsive(border="0" src="/assets/images/name.gif")
-		div.writer
+		div#quote
 			a(href="/annotation" target="_blank") This is food for thought. You do the dishes.
 
 block append scripts
 	script.
 		$(function() {
 			var $img = $("#name img");
-			var $quote = $(".writer a");
+			var $quote = $("#quote a");
 
 			$img.animate({opacity:1}, 1000);
 

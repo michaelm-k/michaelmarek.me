@@ -19,14 +19,6 @@ $navbarToggle.click(function() {
 	}	
 });
 
-$navbarToggle
-	.mouseover(function() {  
-		$(this).addClass('menuHover');
-	})
-	.mouseout(function() {
-		$(this).removeClass('menuHover');	   
-	});
-
 $('#icon_music').click(function() {
 	window.open('player', 'player', 'location=no,width=365,height=487');
 });

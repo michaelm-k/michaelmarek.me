@@ -15,12 +15,14 @@ app.engine('jade', require('jade').__express);
 
 mincerEnvironment.appendPath('assets');
 mincerEnvironment.appendPath('vendor');
-mincerEnvironment.jsCompressor = function(context, data) {
-  return uglify.minify(data, {fromString: true}).code;
-};
-mincerEnvironment.cssCompressor = function(context, data) {
-  return csso.minify(data).css;
-};
+if (environment !== 'development') {
+  mincerEnvironment.jsCompressor = function(context, data) {
+    return uglify.minify(data, {fromString: true}).code;
+  };
+  mincerEnvironment.cssCompressor = function(context, data) {
+    return csso.minify(data).css;
+  };
+}
 app.use('/assets', Mincer.createServer(mincerEnvironment));
 
 if (environment === 'development') {

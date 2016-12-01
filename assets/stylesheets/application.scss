@@ -38,31 +38,29 @@ hr {
 }
 
 #name {
-	img {
-		@include opacity(0);
-	}
-
 	@media (min-width:768px) {
 		&, img {
 			margin: auto;
-			width:600px;
-			height:330px;
+			width: 600px;
+			height: 330px;
 		}
+	}
+
+	img {
+		@include opacity(0);
 	}
 }
 
-.writer {
+#quote {
 	margin-top: -15px;
 	height: 50px;
 	text-align: center;
 
 	a {
 		font-family: 'Permanent Marker', cursive;
-		text-decoration: none;
 		display: none;
 		@include opacity(0);
 		color: #000000;
-		cursor: pointer;
 		font-size: 150%;
 
 		&:hover {
@@ -83,20 +81,19 @@ hr {
 	h2 {
 		margin-bottom: 20px;
 	}
+	@media screen and (max-width:768px){	
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 
 	.content-text {
 		font-size: 16px;
 		font-weight: 500px;
 		line-height: 2.0;
 	}
-
-	@media screen and (max-width:768px){	
-		padding-left: 15px;
-		padding-right: 15px;
-	}
 }
 
-#table_courses {
+#courses {
 	th.no_top {
 		border-top: none;
 	}
@@ -122,6 +119,10 @@ hr {
 .project-image {
 	width: 500px;
 	height: auto;
+	@media screen and (max-width: 800px) {
+		margin-left: 0;
+		width: 100%;	
+	}
 
 	&.right {
 		float: right;
@@ -133,11 +134,6 @@ hr {
 		float: left;
 		clear: left;
 		margin: 0 30px 30px 0;
-	}
-
-	@media screen and (max-width: 800px) {
-		margin-left: 0;
-		width: 100%;	
 	}
 }
 
@@ -167,14 +163,13 @@ hr {
 	width: 500px;
 	height: auto;
 	@include transition-duration(150ms);
-
-	&:hover {
-		@include opacity(0.85);
-		@include transition-duration(150ms);
-	}
-
 	@media screen and (max-width: 768px) {
 		margin-left: 0;
 		width: 100%;
 	}
+
+	&:hover {
+		@include opacity(0.85);
+		@include transition-duration(150ms);
+	}	
 }
