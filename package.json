@@ -9,6 +9,7 @@
   "author": "Michael Marek",
   "license": "ISC",
   "dependencies": {
+    "busboy": "^0.2.13",
     "csso": "^2.3.0",
     "express": "^4.13.3",
     "jade": "1.11.0",
