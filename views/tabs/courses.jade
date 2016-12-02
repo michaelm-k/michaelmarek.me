@@ -60,13 +60,13 @@ block append scripts
 
 			terms = terms.slice(0).reverse();
 			for (var i=0; i<terms.length; i++) {
-				terms[i]["links"] = [];
+				terms[i].links = {};
 				for (var j=0; j<terms[i].courses.length; j++) {
 					var arr = terms[i].courses[j].split(' ');
 					var program = arr[0];
 					if (program !== "TBD") {
 						var code = arr[1].substr(0,3);
-						terms[i]["links"].push("http://www.ucalendar.uwaterloo.ca/1213/COURSE/course-"+program+".html#"+program+code);
+						terms[i].links[terms[i].courses[j]] = "http://www.ucalendar.uwaterloo.ca/1213/COURSE/course-"+program+".html#"+program+code;
 					}		
 				}
 			}
@@ -86,7 +86,7 @@ block append scripts
 					}
 					tr.appendChild(th);
 					var a = document.createElement("a");
-					a.href = terms[i].links[j];
+					a.href = terms[i].links[terms[i].courses[j]] || 'http://www.wtfshouldidowithmylife.com/';
 					a.appendChild(document.createTextNode(terms[i].courses[j]));
 					td.appendChild(a);
 					tr.appendChild(td);
